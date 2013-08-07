@@ -9,8 +9,11 @@ payum:
             xxx_payment:
                 # payment specific options
 
-            xxx_storage:
-                # storage specific options
+            storages:
+                A\Model\Class:
+                    # storage specific options
+                Another\Model\Class:
+                    # storage specific options
                 
         bar_payment_context:
             xxx_payment:
@@ -27,32 +30,31 @@ payum:
                 extensions:
                     - extension.foo
                     - extension.bar
-                
-            xxx_storage:
-                # storage specific options
 ```
 
 ### Doctrine storage:
 
 ```yaml
-doctrine_storage:
+doctrine:
     driver: 'required' # orm only supported atm
-    model_class: 'required'
+    payment_extension:
+        enabled: false
 ```
 
 ### Filesystem storage:
 
 ```yaml
-filesystem_storage:
-    model_class: 'required'
+filesystem:
     storage_dir: 'required'
     id_property: 'required'
+    payment_extension:
+        enabled: false
 ```
 
 ### Paypal express checkout payment
 
 ```yaml
-paypal_express_checkout_nvp_payment:
+paypal_express_checkout_nvp:
     api:
         client: payum.buzz.client #default
         options:
@@ -65,7 +67,7 @@ paypal_express_checkout_nvp_payment:
 ### Authorize.Net AIM payment
 
 ```yaml
-authorize_net_aim_payment:
+authorize_net_aim:
     api:
         options:
             login_id: 'required'
@@ -76,7 +78,7 @@ authorize_net_aim_payment:
 ### Be2Bill payment
 
 ```yml
-be2bill_payment:
+be2bill:
     api:
         options:
             identifier: 'required'
@@ -84,12 +86,35 @@ be2bill_payment:
             sandbox: true
 ```
 
+### Payex payment
+
+```yml
+payex:
+    api:
+        options:
+            encryption_key: 'required'
+            account_number: 'required'
+            sandbox: true
+```
+
 ### Omnipay payment
 
 ```yml
-ominpay_payment:
+omnipay:
     type: 'required'
     options:
         foo: fooOpt
         bar: barOpt
 ```
+
+### Custom payment
+
+```yaml
+custom:
+    #if service not set an empty payment will be created. 
+    service: ~ 
+```
+
+### Next Step
+
+* [Back to index](index.md).

@@ -5,25 +5,40 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="payum.class">Payum\Bundle\PayumBundle\Context\ContextRegistry</parameter>
+        <parameter key="payum.class">Payum\Bundle\PayumBundle\Registry\ContainerAwareRegistry</parameter>
+        <parameter key="payum.payment.class">Payum\Payment</parameter>
+        <parameter key="payum.token_manager.class">Payum\Bundle\PayumBundle\Service\TokenManager</parameter>
         <parameter key="payum.extension.storage.class">Payum\Extension\StorageExtension</parameter>
         <parameter key="payum.extension.endless_cycle_detector.class">Payum\Extension\EndlessCycleDetectorExtension</parameter>
         <parameter key="payum.buzz.client.class">Buzz\Client\Curl</parameter>
         <parameter key="payum.listener.interactive_request.class">Payum\Bundle\PayumBundle\EventListener\InteractiveRequestListener</parameter>
 
-        <parameter key="payum.action.capture_payment_instruction_aggregate.class">Payum\Action\CapturePaymentInstructionAggregateAction</parameter>
-        <parameter key="payum.action.sync_payment_instruction_aggregate.class">Payum\Action\SyncPaymentInstructionAggregateAction</parameter>
-        <parameter key="payum.action.status_payment_instruction_aggregate.class">Payum\Action\StatusPaymentInstructionAggregateAction</parameter>
+        <parameter key="payum.action.capture_details_aggregated_model.class">Payum\Action\CaptureDetailsAggregatedModelAction</parameter>
+        <parameter key="payum.action.sync_details_aggregated_model.class">Payum\Action\SyncDetailsAggregatedModelAction</parameter>
+        <parameter key="payum.action.status_details_aggregated_model.class">Payum\Action\StatusDetailsAggregatedModelAction</parameter>
     </parameters>
 
     <services>
+        <service id="payum" class="%payum.class%">
+            <argument type="collection" /> <!-- payments services. this should be replaced while container is built -->
+            <argument type="collection" /> <!-- storages services. this should be replaced while container is built -->
+            <argument /> <!-- payment default name. this should be replaced while container is built -->
+            <argument /> <!-- storage default name. this should be replaced while container is built -->
+
+            <call method="setContainer">
+                <argument type="service" id="service_container" />
+            </call>
+        </service>
+        
         <service id="payum.buzz.client" class="%payum.buzz.client.class%" public="false">
             <call method="setTimeout">
                 <argument>200</argument>
             </call>
         </service>
 
-        <service id="payum" class="%payum.class%">
+        <service id="payum.token_manager" class="%payum.token_manager.class%">
+            <argument type="service" id="router"></argument>
+            <argument type="service" id="payum"></argument>
         </service>
 
         <service
@@ -46,18 +61,18 @@
         </service>
 
         <service 
-            id="payum.action.capture_payment_instruction_aggregate" 
-            class="%payum.action.capture_payment_instruction_aggregate.class%"
+            id="payum.action.capture_details_aggregated_model" 
+            class="%payum.action.capture_details_aggregated_model.class%"
         />
 
         <service
-            id="payum.action.sync_payment_instruction_aggregate"
-            class="%payum.action.sync_payment_instruction_aggregate.class%"
+            id="payum.action.sync_details_aggregated_model"
+            class="%payum.action.sync_details_aggregated_model.class%"
         />
 
         <service
-            id="payum.action.status_payment_instruction_aggregate"
-            class="%payum.action.status_payment_instruction_aggregate.class%"
+            id="payum.action.status_details_aggregated_model"
+            class="%payum.action.status_details_aggregated_model.class%"
         />
     </services>
 </container>

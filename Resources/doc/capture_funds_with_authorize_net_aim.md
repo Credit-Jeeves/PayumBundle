@@ -31,7 +31,7 @@ _**Note:** You can immediately start using it. The autoloading files have been g
 payum:
     contexts:
         your_context_here:
-            authorize_net_aim_payment:
+            authorize_net_aim:
                 api:
                     options:
                         login_id: 'get it from gateway'
@@ -41,12 +41,11 @@ payum:
 
 **Warning:**
 
-> You have to changed this name `your_context_name` to something related to your domain, for example `post_a_job_with_authorize_net` 
-
+> You have to changed this name `your_payment_name` to something related to your domain, for example `post_a_job_with_authorize_net` 
 
 #### 2-a. Configure doctrine storage
 
-Extend payment instruction class with added id property:
+Extend PaymentDetails class with added id property:
 
 ```php
 <?php
@@ -55,12 +54,12 @@ Extend payment instruction class with added id property:
 namespace AcmeDemoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Payum\AuthorizeNet\Aim\Bridge\Doctrine\Entity\PaymentInstruction;
+use Payum\AuthorizeNet\Aim\Bridge\Doctrine\Entity\PaymentDetails;
 
 /**
  * @ORM\Entity
  */
-class AuthorizeNetPaymentInstruction extends PaymentInstruction
+class AuthorizeNetPaymentDetails extends PaymentDetails
 {
     /**
      * @ORM\Column(name="id", type="integer")
@@ -78,10 +77,12 @@ and configure storage to use this model:
 
 payum:
     contexts:
-        your_context_name:
-            doctrine_storage:
-                driver: orm
-                model_class: AcmeDemoBundle\Entity\AuthorizeNetPaymentInstruction
+        your_payment_name:
+            storages:
+                AcmeDemoBundle\Entity\AuthorizeNetPaymentDetails:
+                    doctrine:
+                        driver: orm
+                        payment_extension: true
 
 doctrine:
     orm:
@@ -97,7 +98,7 @@ doctrine:
 
 #### 2-b. Configure filesystem storage
 
-Extend payment instruction class with added `id` property:
+Extend PaymentDetails class with added `id` property:
 
 ```php
 <?php
@@ -105,9 +106,9 @@ Extend payment instruction class with added `id` property:
 
 namespace AcmeDemoBundle\Model;
 
-use Payum\AuthorizeNet\Aim\PaymentInstruction;
+use Payum\AuthorizeNet\Aim\Model\PaymentDetails;
 
-class AuthorizeNetPaymentInstruction extends PaymentInstruction
+class AuthorizeNetPaymentDetails extends PaymentDetails
 {
     protected $id;
     
@@ -125,18 +126,20 @@ and configure storage to use this model:
 
 payum:
     contexts:
-        your_name_here:
-            filesystem_storage:
-                model_class: Acme\DemoBundle\Model\AuthorizeNetPaymentInstruction
-                storage_dir: %kernel.root_dir%/Resources/payments
-                id_property: id
+        your_payment_name:
+            storages:
+                Acme\DemoBundle\Model\AuthorizeNetPaymentDetails:
+                    filesystem:
+                        storage_dir: %kernel.root_dir%/Resources/payments
+                        id_property: id
+                        payment_extension: true
 ```
 
-### Step 3. Capture payment: 
+### Step 3. Capture payment:
+
+_**Note** : We assume you [configured capture controller](basic_setup.md#step-3-configure-capture-controller-optional)_
 
 _**Note** : We assume you choose a storage._
- 
-_**Note** : We assume you use [simple capture controller](capture_simple_controller.md)._
 
 ```php
 <?php
@@ -144,27 +147,38 @@ _**Note** : We assume you use [simple capture controller](capture_simple_control
 namespace AcmeDemoBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use Acme\DemoBundle\Entity\Be2billPaymentInstruction;
+use Acme\DemoBundle\Entity\AuthorizeNetPaymentDetails;
 
 class PaymentController extends Controller 
 {
     public function prepareAuthorizeNetPaymentAction(Request $request)
     {
-        $contextName = 'your_context_name';
+        $paymentName = 'your_payment_name';
     
-        $paymentContext = $this->get('payum')->getContext($contextName);
+        $storage = $this->get('payum')->getStorageForClass(
+            'Acme\DemoBundle\Entity\AuthorizeNetPaymentDetails',
+            $paymentName
+        );
     
-        /** @var AuthorizeNetPaymentInstruction */
-        $instruction = $paymentContext->getStorage()->createModel();
+        /** @var AuthorizeNetPaymentDetails */
+        $paymentDetails = $storage->createModel();
     
-        $instruction->setAmount(1.23);
-        $instruction->setClientemail('user@email.com');
-        $instruction->setCardNum('1111222233334444');
-        $instruction->setExpDate('15-11');
+        $paymentDetails->setAmount(1.23);
+        $paymentDetails->setClientemail('user@email.com');
+        $paymentDetails->setCardNum('1111222233334444');
+        $paymentDetails->setExpDate('15-11');
         
-        return $this->forward('AcmePaymentBundle:Capture:simpleCapture', array(
-            'contextName' => $contextName,
-            'model' => $instruction
+        $storage->updateModel($paymentDetails);
+        
+        $captureToken = $this->get('payum.token_manager')->createTokenForCaptureRoute(
+            $paymentName,
+            $paymentDetails,
+            'acme_payment_done' // the route to redirect after capture;
+        );
+
+        return $this->forward('PayumBundle:Capture:do', array(
+            'paymentName' => $paymentName,
+            'token' => $captureToken,
         ));
     }
 }
@@ -172,5 +186,7 @@ class PaymentController extends Controller
 
 ### Next Step
 
-* [Simple capture controller (an example)](capture_simple_controller.md).
+* [How payment dome action could look like?](how_payment_done_action_could_look_like.md).
 * [Configuration reference](configuration_reference.md).
+* [Sandbox](sandbox.md).
+* [Back to index](index.md).
