@@ -11,6 +11,7 @@ use Payum\Bundle\PayumBundle\DependencyInjection\Factory\Payment\PaypalProChecko
 use Payum\Bundle\PayumBundle\DependencyInjection\Factory\Payment\Be2BillPaymentFactory;
 use Payum\Bundle\PayumBundle\DependencyInjection\Factory\Payment\PayexPaymentFactory;
 use Payum\Bundle\PayumBundle\DependencyInjection\Factory\Payment\AuthorizeNetAimPaymentFactory;
+use Payum\Bundle\PayumBundle\DependencyInjection\Factory\Payment\HeartlandPaymentFactory;
 use Payum\Bundle\PayumBundle\DependencyInjection\Factory\Storage\DoctrineStorageFactory;
 use Payum\Bundle\PayumBundle\DependencyInjection\Factory\Storage\FilesystemStorageFactory;
 
@@ -30,6 +31,7 @@ class PayumBundle extends Bundle
         $extension->addPaymentFactory(new PayexPaymentFactory);
         $extension->addPaymentFactory(new OmnipayPaymentFactory);
         $extension->addPaymentFactory(new CustomPaymentFactory);
+        $extension->addPaymentFactory(new HeartlandPaymentFactory);
 
         $extension->addStorageFactory(new FilesystemStorageFactory);
         $extension->addStorageFactory(new DoctrineStorageFactory);
