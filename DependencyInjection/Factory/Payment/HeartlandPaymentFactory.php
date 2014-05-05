@@ -42,6 +42,11 @@ class HeartlandPaymentFactory extends AbstractPaymentFactory
         $container->setDefinition($captureActionId, $captureActionDefinition);
         $paymentDefinition->addMethodCall('addAction', array(new Reference($captureActionId)));
 
+        $captureActionDefinition = new DefinitionDecorator('payum.heartland.action.register_token_to_additional_merchant');
+        $captureActionId = 'payum.context.'.$contextName.'.action.register_token_to_additional_merchant';
+        $container->setDefinition($captureActionId, $captureActionDefinition);
+        $paymentDefinition->addMethodCall('addAction', array(new Reference($captureActionId)));
+
         $captureActionDefinition = new DefinitionDecorator('payum.heartland.action.get_token');
         $captureActionId = 'payum.context.'.$contextName.'.action.get_token';
         $container->setDefinition($captureActionId, $captureActionDefinition);
