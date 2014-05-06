@@ -9,6 +9,7 @@
         <parameter key="payum.heartland.api.class">Payum\Heartland\Api</parameter>
         <parameter key="payum.heartland.soap.class">Payum\Heartland\SoapClient</parameter>
         <parameter key="payum.heartland.action.make_blind_payment.class">Payum\Heartland\Action\MakeBlindPaymentAction</parameter>
+        <parameter key="payum.heartland.action.register_token_to_additional_merchant.class">Payum\Heartland\Action\RegisterTokenToAdditionalMerchantAction</parameter>
         <parameter key="payum.heartland.action.get_token.class">Payum\Heartland\Action\GetTokenAction</parameter>
         <parameter key="payum.heartland.action.status.class">Payum\Heartland\Action\StatusAction</parameter>
     </parameters>
@@ -27,6 +28,13 @@
         <service
             id="payum.heartland.action.make_blind_payment"
             class="%payum.heartland.action.make_blind_payment.class%"
+            public="false"
+        >
+        </service>
+
+        <service
+            id="payum.heartland.action.register_token_to_additional_merchant"
+            class="%payum.heartland.action.register_token_to_additional_merchant.class%"
             public="false"
         >
         </service>
