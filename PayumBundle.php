@@ -13,6 +13,7 @@ use Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Payment\PayexPaymentFa
 use Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Payment\AuthorizeNetAimPaymentFactory;
 use Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Storage\DoctrineStorageFactory;
 use Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Storage\FilesystemStorageFactory;
+use Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Payment\HeartlandPaymentFactory;
 
 class PayumBundle extends Bundle
 {
@@ -30,6 +31,7 @@ class PayumBundle extends Bundle
         $extension->addPaymentFactory(new PayexPaymentFactory);
         $extension->addPaymentFactory(new OmnipayPaymentFactory);
         $extension->addPaymentFactory(new CustomPaymentFactory);
+        $extension->addPaymentFactory(new HeartlandPaymentFactory());
 
         $extension->addStorageFactory(new FilesystemStorageFactory);
         $extension->addStorageFactory(new DoctrineStorageFactory);
