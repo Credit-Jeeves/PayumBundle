@@ -1,7 +1,7 @@
 <?php
-namespace Payum\Bundle\PayumBundle\Tests\DependencyInjection\Factory\Storage;
+namespace Payum2\Bundle\PayumBundle\Tests\DependencyInjection\Factory\Storage;
 
-use Payum\Bundle\PayumBundle\DependencyInjection\Factory\Storage\FilesystemStorageFactory;
+use Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Storage\FilesystemStorageFactory;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\Processor;
 
@@ -12,9 +12,9 @@ class FilesystemStorageFactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldBeSubClassOfAbstractStorageFactory()
     {
-        $rc = new \ReflectionClass('Payum\Bundle\PayumBundle\DependencyInjection\Factory\Storage\FilesystemStorageFactory');
+        $rc = new \ReflectionClass('Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Storage\FilesystemStorageFactory');
 
-        $this->assertTrue($rc->isSubclassOf('Payum\Bundle\PayumBundle\DependencyInjection\Factory\Storage\AbstractStorageFactory'));
+        $this->assertTrue($rc->isSubclassOf('Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Storage\AbstractStorageFactory'));
     }
 
     /**

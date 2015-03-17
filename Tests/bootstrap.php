@@ -11,4 +11,4 @@ EOM;
     exit(1);
 }
 
-$loader->add('Payum\Bundle\PayumBundle\Tests', __DIR__);
+$loader->add('Payum2\Bundle\PayumBundle\Tests', __DIR__);

@@ -1,14 +1,14 @@
 <?php
-namespace Payum\Bundle\PayumBundle\DependencyInjection;
+namespace Payum2\Bundle\PayumBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
-use Payum\Bundle\PayumBundle\DependencyInjection\Factory\Storage\StorageFactoryInterface;
-use Payum\Bundle\PayumBundle\DependencyInjection\Factory\Payment\PaymentFactoryInterface;
+use Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Storage\StorageFactoryInterface;
+use Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Payment\PaymentFactoryInterface;
 
-use Payum\Exception\LogicException;
+use Payum2\Exception\LogicException;
 
 class MainConfiguration implements ConfigurationInterface
 {

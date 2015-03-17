@@ -56,7 +56,7 @@ Extend PaymentDetails class with added id property:
 namespace AcmeDemoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Payum\Paypal\ExpressCheckout\Nvp\Bridge\Doctrine\Entity\PaymentDetails;
+use Payum2\Paypal\ExpressCheckout\Nvp\Bridge\Doctrine\Entity\PaymentDetails;
 
 /**
  * @ORM\Entity
@@ -95,7 +95,7 @@ doctrine:
                         is_bundle: false
                         type: xml 
                         dir: %kernel.root_dir%/../vendor/payum/paypal-express-checkout-nvp/src/Payum/Paypal/ExpressCheckout/Nvp/Bridge/Doctrine/Resources/mapping
-                        prefix: Payum\Paypal\ExpressCheckout\Nvp\Bridge\Doctrine\Entity
+                        prefix: Payum2\Paypal\ExpressCheckout\Nvp\Bridge\Doctrine\Entity
 ```
 
 #### 2-b. Configure filesystem storage
@@ -108,7 +108,7 @@ Extend PaymentDetails class with added `id` property:
 
 namespace AcmeDemoBundle\Model;
 
-use Payum\Paypal\ExpressCheckout\Nvp\Model\PaymentDetails;
+use Payum2\Paypal\ExpressCheckout\Nvp\Model\PaymentDetails;
 
 class PaypalExpressPaymentDetails extends PaymentDetails
 {

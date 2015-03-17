@@ -1,5 +1,5 @@
 <?php
-namespace Payum\Bundle\PayumBundle\Tests\DependencyInjection\Factory\Storage;
+namespace Payum2\Bundle\PayumBundle\Tests\DependencyInjection\Factory\Storage;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\Processor;
@@ -7,7 +7,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
 
-use Payum\Bundle\PayumBundle\DependencyInjection\Factory\Storage\AbstractStorageFactory;
+use Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Storage\AbstractStorageFactory;
 
 class AbstractStorageFactoryTest extends \PHPUnit_Framework_TestCase
 {
@@ -16,9 +16,9 @@ class AbstractStorageFactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldImplementStorageFactoryInterface()
     {
-        $rc = new \ReflectionClass('Payum\Bundle\PayumBundle\DependencyInjection\Factory\Storage\AbstractStorageFactory');
+        $rc = new \ReflectionClass('Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Storage\AbstractStorageFactory');
         
-        $this->assertTrue($rc->implementsInterface('Payum\Bundle\PayumBundle\DependencyInjection\Factory\Storage\StorageFactoryInterface'));
+        $this->assertTrue($rc->implementsInterface('Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Storage\StorageFactoryInterface'));
     }
 
     /**
@@ -26,7 +26,7 @@ class AbstractStorageFactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldBeAbstract()
     {
-        $rc = new \ReflectionClass('Payum\Bundle\PayumBundle\DependencyInjection\Factory\Storage\StorageFactoryInterface');
+        $rc = new \ReflectionClass('Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Storage\StorageFactoryInterface');
 
         $this->assertTrue($rc->isAbstract());
     }
@@ -211,7 +211,7 @@ class AbstractStorageFactoryTest extends \PHPUnit_Framework_TestCase
 
         $container = new ContainerBuilder;
         $container->setDefinition('aPaymentId', new Definition);
-        $container->getDefinition('aPaymentId')->setClass('Payum\PaymentInterface');
+        $container->getDefinition('aPaymentId')->setClass('Payum2\PaymentInterface');
 
         $factory->create($container, 'aContextName', 'A\Model\Class', 'aPaymentId', array(
             'payment_extension' => array(
@@ -248,6 +248,6 @@ class AbstractStorageFactoryTest extends \PHPUnit_Framework_TestCase
      */
     protected function createAbstractStorageFactory()
     {
-        return $this->getMockForAbstractClass('Payum\Bundle\PayumBundle\DependencyInjection\Factory\Storage\AbstractStorageFactory');
+        return $this->getMockForAbstractClass('Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Storage\AbstractStorageFactory');
     }
 }

@@ -39,7 +39,7 @@ public function registerBundles()
 {
     $bundles = array(
         // ...
-        new Payum\Bundle\PayumBundle\PayumBundle(),
+        new Payum2\Bundle\PayumBundle\PayumBundle(),
     );
 }
 ```
@@ -78,7 +78,7 @@ Extend `TokenizedDetails` class:
 namespace AcmeDemoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Payum\Bridge\Doctrine\Entity\TokenizedDetails as BaseTokenizedDetails;
+use Payum2\Bridge\Doctrine\Entity\TokenizedDetails as BaseTokenizedDetails;
 
 /**
  * @ORM\Entity
@@ -111,7 +111,7 @@ doctrine:
                         is_bundle: false
                         type: xml 
                         dir: %kernel.root_dir%/../vendor/payum/payum/src/Payum/Bridge/Doctrine/Resources/mapping
-                        prefix: Payum\Bridge\Doctrine\Entity
+                        prefix: Payum2\Bridge\Doctrine\Entity
 ```
 
 #### 3-c. Configure filesystem TokenizedDetails model.
@@ -124,7 +124,7 @@ Extend TokenizedDetails class with added `id` property:
 
 namespace AcmeDemoBundle\Model;
 
-use Payum\Model\TokenizedDetails as BaseTokenizedDetails;
+use Payum2\Model\TokenizedDetails as BaseTokenizedDetails;
 
 class TokenizedDetails extends BaseTokenizedDetails
 {

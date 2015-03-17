@@ -1,9 +1,9 @@
 <?php
-namespace Payum\Bundle\PayumBundle\Request;
+namespace Payum2\Bundle\PayumBundle\Request;
 
 use Symfony\Component\HttpFoundation\Response;
 
-use Payum\Request\BaseInteractiveRequest;
+use Payum2\Request\BaseInteractiveRequest;
 
 class ResponseInteractiveRequest extends BaseInteractiveRequest
 {

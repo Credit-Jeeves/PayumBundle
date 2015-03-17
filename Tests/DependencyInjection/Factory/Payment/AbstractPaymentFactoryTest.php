@@ -1,5 +1,5 @@
 <?php
-namespace Payum\Bundle\PayumBundle\Tests\DependencyInjection\Factory\Payment;
+namespace Payum2\Bundle\PayumBundle\Tests\DependencyInjection\Factory\Payment;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\Processor;
@@ -7,7 +7,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
 
-use Payum\Bundle\PayumBundle\DependencyInjection\Factory\Payment\AbstractPaymentFactory;
+use Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Payment\AbstractPaymentFactory;
 
 class AbstractPaymentFactoryTest extends \PHPUnit_Framework_TestCase
 {
@@ -16,9 +16,9 @@ class AbstractPaymentFactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldImplementPaymentFactoryInterface()
     {
-        $rc = new \ReflectionClass('Payum\Bundle\PayumBundle\DependencyInjection\Factory\Payment\AbstractPaymentFactory');
+        $rc = new \ReflectionClass('Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Payment\AbstractPaymentFactory');
         
-        $this->assertTrue($rc->implementsInterface('Payum\Bundle\PayumBundle\DependencyInjection\Factory\Payment\PaymentFactoryInterface'));
+        $this->assertTrue($rc->implementsInterface('Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Payment\PaymentFactoryInterface'));
     }
 
     /**
@@ -26,7 +26,7 @@ class AbstractPaymentFactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldBeAbstract()
     {
-        $rc = new \ReflectionClass('Payum\Bundle\PayumBundle\DependencyInjection\Factory\Payment\AbstractPaymentFactory');
+        $rc = new \ReflectionClass('Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Payment\AbstractPaymentFactory');
 
         $this->assertTrue($rc->isAbstract());
     }
@@ -318,6 +318,6 @@ class AbstractPaymentFactoryTest extends \PHPUnit_Framework_TestCase
      */
     protected function createAbstractPaymentFactory()
     {
-        return $this->getMockForAbstractClass('Payum\Bundle\PayumBundle\DependencyInjection\Factory\Payment\AbstractPaymentFactory');
+        return $this->getMockForAbstractClass('Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Payment\AbstractPaymentFactory');
     }
 }

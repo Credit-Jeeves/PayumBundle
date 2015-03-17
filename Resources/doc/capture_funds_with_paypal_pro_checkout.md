@@ -54,7 +54,7 @@ Extend PaymentDetails class with added `id` property:
 
 namespace AcmeDemoBundle\Model;
 
-use Payum\Paypal\ProCheckout\Nvp\Model\PaymentDetails;
+use Payum2\Paypal\ProCheckout\Nvp\Model\PaymentDetails;
 
 class PaypalProPaymentDetails extends PaymentDetails
 {

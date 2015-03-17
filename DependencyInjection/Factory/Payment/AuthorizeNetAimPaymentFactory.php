@@ -1,5 +1,5 @@
 <?php
-namespace Payum\Bundle\PayumBundle\DependencyInjection\Factory\Payment;
+namespace Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Payment;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
@@ -10,7 +10,7 @@ use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\FileLocator;
 
-use Payum\Exception\RuntimeException;
+use Payum2\Exception\RuntimeException;
 
 class AuthorizeNetAimPaymentFactory extends AbstractPaymentFactory
 {
@@ -19,7 +19,7 @@ class AuthorizeNetAimPaymentFactory extends AbstractPaymentFactory
      */
     public function create(ContainerBuilder $container, $contextName, array $config)
     {
-        if (false == class_exists('Payum\AuthorizeNet\Aim\PaymentFactory')) {
+        if (false == class_exists('Payum2\AuthorizeNet\Aim\PaymentFactory')) {
             throw new RuntimeException('Cannot find Authorize.net payment factory class. Have you installed payum/authorize-net-aim package?');
         }
         

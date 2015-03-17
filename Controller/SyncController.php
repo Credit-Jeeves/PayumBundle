@@ -1,13 +1,13 @@
 <?php
-namespace Payum\Bundle\PayumBundle\Controller;
+namespace Payum2\Bundle\PayumBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-use Payum\Request\SyncRequest;
-use Payum\Registry\RegistryInterface;
-use Payum\Exception\RequestNotSupportedException;
-use Payum\Bundle\PayumBundle\Service\TokenManager;
+use Payum2\Request\SyncRequest;
+use Payum2\Registry\RegistryInterface;
+use Payum2\Exception\RequestNotSupportedException;
+use Payum2\Bundle\PayumBundle\Service\TokenManager;
 
 class SyncController extends Controller 
 {

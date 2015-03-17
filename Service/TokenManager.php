@@ -1,16 +1,15 @@
 <?php
-namespace Payum\Bundle\PayumBundle\Service;
+namespace Payum2\Bundle\PayumBundle\Service;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Routing\RouterInterface;
-
-use Payum\Registry\RegistryInterface;
-use Payum\Exception\LogicException;
-use Payum\Model\TokenizedDetails;
-use Payum\Storage\StorageInterface;
+use Payum2\Registry\RegistryInterface;
+use Payum2\Exception\LogicException;
+use Payum2\Model\TokenizedDetails;
+use Payum2\Storage\StorageInterface;
 
 class TokenManager 
 {
@@ -40,7 +39,7 @@ class TokenManager
      * 
      * @throws \Symfony\Component\HttpKernel\Exception\HttpException
      * 
-     * @return \Payum\Model\TokenizedDetails
+     * @return \Payum2\Model\TokenizedDetails
      */
     public function getTokenFromRequest(Request $request, array $options = array())
     {
@@ -201,14 +200,14 @@ class TokenManager
     public function getStorage($paymentName)
     {
         foreach ($this->payum->getStorages($paymentName) as $modelClass => $storage) {
-            if (is_subclass_of($modelClass, 'Payum\Model\TokenizedDetails')) {
+            if (is_subclass_of($modelClass, 'Payum2\Model\TokenizedDetails')) {
                 return $storage;
             }
         }
 
         throw new LogicException(sprintf(
             'Cannot find storage that supports %s for payment %s',
-            'Payum\Model\TokenizedDetails',
+            'Payum2\Model\TokenizedDetails',
             $paymentName
         ));
     }

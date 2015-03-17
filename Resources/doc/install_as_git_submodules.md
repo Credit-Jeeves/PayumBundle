@@ -10,7 +10,7 @@ $ git submodule update --init
 
 ### Step 2: Configure the Autoloader
 
-You have to add the `Payum\PayumBundle` namespace to your autoloader:
+You have to add the `Payum2\PayumBundle` namespace to your autoloader:
 
 ``` php
 <?php
@@ -22,7 +22,7 @@ You have to add the `Payum\PayumBundle` namespace to your autoloader:
 
 $loader->registerNamespaces(array(
     // ...
-    'Payum\PayumBundle' => __DIR__.'/../vendor/payum/payum-bundle',
+    'Payum2\PayumBundle' => __DIR__.'/../vendor/payum/payum-bundle',
 ));
 
 $loader->register();

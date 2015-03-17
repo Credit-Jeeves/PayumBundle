@@ -1,9 +1,9 @@
 <?php
-namespace Payum\Bundle\PayumBundle\Tests\Registry;
+namespace Payum2\Bundle\PayumBundle\Tests\Registry;
 
 use Symfony\Component\DependencyInjection\Container;
 
-use Payum\Bundle\PayumBundle\Registry\ContainerAwareRegistry;
+use Payum2\Bundle\PayumBundle\Registry\ContainerAwareRegistry;
 
 class ContainerAwareRegistryTest extends \PHPUnit_Framework_TestCase 
 {
@@ -12,9 +12,9 @@ class ContainerAwareRegistryTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldBeSubClassOfAbstractRegistry()
     {
-        $rc = new \ReflectionClass('Payum\Bundle\PayumBundle\Registry\ContainerAwareRegistry');
+        $rc = new \ReflectionClass('Payum2\Bundle\PayumBundle\Registry\ContainerAwareRegistry');
 
-        $this->assertTrue($rc->isSubclassOf('Payum\Registry\AbstractRegistry'));
+        $this->assertTrue($rc->isSubclassOf('Payum2\Registry\AbstractRegistry'));
     }
 
     /**
@@ -22,7 +22,7 @@ class ContainerAwareRegistryTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldImplementContainerAwareInterface()
     {
-        $rc = new \ReflectionClass('Payum\Bundle\PayumBundle\Registry\ContainerAwareRegistry');
+        $rc = new \ReflectionClass('Payum2\Bundle\PayumBundle\Registry\ContainerAwareRegistry');
 
         $this->assertTrue($rc->implementsInterface('Symfony\Component\DependencyInjection\ContainerAwareInterface'));
     }
@@ -53,7 +53,7 @@ class ContainerAwareRegistryTest extends \PHPUnit_Framework_TestCase
         $storageName = 'barName';
         
         $container = new Container;
-        $container->set('fooPaymentServiceId', $this->getMock('Payum\PaymentInterface'));
+        $container->set('fooPaymentServiceId', $this->getMock('Payum2\PaymentInterface'));
 
         $registry = new ContainerAwareRegistry($payments, $storages, $paymentName, $storageName);
         $registry->setContainer($container);
@@ -80,7 +80,7 @@ class ContainerAwareRegistryTest extends \PHPUnit_Framework_TestCase
         $storageName = 'barName';
 
         $container = new Container;
-        $container->set('fooStorageServiceId', $this->getMock('Payum\Storage\StorageInterface'));
+        $container->set('fooStorageServiceId', $this->getMock('Payum2\Storage\StorageInterface'));
 
         $registry = new ContainerAwareRegistry($payments, $storages, $paymentName, $storageName);
         $registry->setContainer($container);

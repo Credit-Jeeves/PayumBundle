@@ -1,5 +1,5 @@
 <?php
-namespace Payum\Bundle\PayumBundle\Tests\DependencyInjection\Factory\Payment;
+namespace Payum2\Bundle\PayumBundle\Tests\DependencyInjection\Factory\Payment;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\Processor;
@@ -7,13 +7,13 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
 
-use Payum\Bundle\PayumBundle\DependencyInjection\Factory\Payment\PayexPaymentFactory;
+use Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Payment\PayexPaymentFactory;
 
 class PayexPaymentFactoryTest extends \PHPUnit_Framework_TestCase
 {
     public static function setUpBeforeClass() 
     {
-        if (false == class_exists('Payum\Payex\PaymentFactory')) {
+        if (false == class_exists('Payum2\Payex\PaymentFactory')) {
             throw new \PHPUnit_Framework_SkippedTestError('Skipped because payment library is not installed.');
         }
     }
@@ -47,9 +47,9 @@ class PayexPaymentFactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldBeSubClassOfAbstractPaymentFactory()
     {
-        $rc = new \ReflectionClass('Payum\Bundle\PayumBundle\DependencyInjection\Factory\Payment\PayexPaymentFactory');
+        $rc = new \ReflectionClass('Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Payment\PayexPaymentFactory');
 
-        $this->assertTrue($rc->isSubclassOf('Payum\Bundle\PayumBundle\DependencyInjection\Factory\Payment\AbstractPaymentFactory'));
+        $this->assertTrue($rc->isSubclassOf('Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Payment\AbstractPaymentFactory'));
     }
 
     /**

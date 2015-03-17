@@ -1,14 +1,14 @@
 <?php
-namespace Payum\Bundle\PayumBundle\DependencyInjection;
+namespace Payum2\Bundle\PayumBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\Config\FileLocator;
 
-use Payum\Exception\InvalidArgumentException;
-use Payum\Bundle\PayumBundle\DependencyInjection\Factory\Storage\StorageFactoryInterface;
-use Payum\Bundle\PayumBundle\DependencyInjection\Factory\Payment\PaymentFactoryInterface;
+use Payum2\Exception\InvalidArgumentException;
+use Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Storage\StorageFactoryInterface;
+use Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Payment\PaymentFactoryInterface;
 
 class PayumExtension extends Extension
 {

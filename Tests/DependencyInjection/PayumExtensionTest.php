@@ -1,16 +1,16 @@
 <?php
-namespace Payum\Bundle\PayumBundle\Tests\DependencyInjection;
+namespace Payum2\Bundle\PayumBundle\Tests\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 
-use Payum\Bundle\PayumBundle\DependencyInjection\Factory\Payment\AuthorizeNetAimPaymentFactory;
-use Payum\Bundle\PayumBundle\DependencyInjection\Factory\Payment\Be2BillPaymentFactory;
-use Payum\Bundle\PayumBundle\DependencyInjection\Factory\Payment\OmnipayPaymentFactory;
-use Payum\Bundle\PayumBundle\DependencyInjection\Factory\Payment\PaypalExpressCheckoutNvpPaymentFactory;
-use Payum\Bundle\PayumBundle\DependencyInjection\Factory\Payment\PaypalProCheckoutNvpPaymentFactory;
-use Payum\Bundle\PayumBundle\DependencyInjection\PayumExtension;
+use Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Payment\AuthorizeNetAimPaymentFactory;
+use Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Payment\Be2BillPaymentFactory;
+use Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Payment\OmnipayPaymentFactory;
+use Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Payment\PaypalExpressCheckoutNvpPaymentFactory;
+use Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Payment\PaypalProCheckoutNvpPaymentFactory;
+use Payum2\Bundle\PayumBundle\DependencyInjection\PayumExtension;
 use Symfony\Component\DependencyInjection\Reference;
 
 class PayumExtensionTest extends  \PHPUnit_Framework_TestCase
@@ -28,7 +28,7 @@ class PayumExtensionTest extends  \PHPUnit_Framework_TestCase
      */
     public function shouldAllowAddPaymentFactory()
     {
-        $factory = $this->getMock('Payum\Bundle\PayumBundle\DependencyInjection\Factory\Payment\PaymentFactoryInterface');
+        $factory = $this->getMock('Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Payment\PaymentFactoryInterface');
         $factory
             ->expects($this->any())
             ->method('getName')
@@ -45,12 +45,12 @@ class PayumExtensionTest extends  \PHPUnit_Framework_TestCase
     /**
      * @test
      * 
-     * @expectedException \Payum\Exception\InvalidArgumentException
+     * @expectedException \Payum2\Exception\InvalidArgumentException
      * @expectedExceptionMessage The payment factory Mock_PaymentFactoryInterface
      */
     public function throwIfTryToAddPaymentFactoryWithEmptyName()
     {
-        $factoryWithEmptyName = $this->getMock('Payum\Bundle\PayumBundle\DependencyInjection\Factory\Payment\PaymentFactoryInterface');
+        $factoryWithEmptyName = $this->getMock('Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Payment\PaymentFactoryInterface');
         $factoryWithEmptyName
             ->expects($this->once())
             ->method('getName')
@@ -64,12 +64,12 @@ class PayumExtensionTest extends  \PHPUnit_Framework_TestCase
     /**
      * @test
      *
-     * @expectedException \Payum\Exception\InvalidArgumentException
+     * @expectedException \Payum2\Exception\InvalidArgumentException
      * @expectedExceptionMessage The payment factory with such name theFoo already registered
      */
     public function throwIfTryToAddPaymentFactoryWithNameAlreadyAdded()
     {
-        $factory = $this->getMock('Payum\Bundle\PayumBundle\DependencyInjection\Factory\Payment\PaymentFactoryInterface');
+        $factory = $this->getMock('Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Payment\PaymentFactoryInterface');
         $factory
             ->expects($this->any())
             ->method('getName')
@@ -86,7 +86,7 @@ class PayumExtensionTest extends  \PHPUnit_Framework_TestCase
      */
     public function shouldAllowAddStorageFactory()
     {
-        $factory = $this->getMock('Payum\Bundle\PayumBundle\DependencyInjection\Factory\Storage\StorageFactoryInterface');
+        $factory = $this->getMock('Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Storage\StorageFactoryInterface');
         $factory
             ->expects($this->any())
             ->method('getName')
@@ -102,12 +102,12 @@ class PayumExtensionTest extends  \PHPUnit_Framework_TestCase
     /**
      * @test
      *
-     * @expectedException \Payum\Exception\InvalidArgumentException
+     * @expectedException \Payum2\Exception\InvalidArgumentException
      * @expectedExceptionMessage The storage factory Mock_StorageFactoryInterface_
      */
     public function throwIfTryToAddStorageFactoryWithEmptyName()
     {
-        $factoryWithEmptyName = $this->getMock('Payum\Bundle\PayumBundle\DependencyInjection\Factory\Storage\StorageFactoryInterface');
+        $factoryWithEmptyName = $this->getMock('Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Storage\StorageFactoryInterface');
         $factoryWithEmptyName
             ->expects($this->once())
             ->method('getName')
@@ -121,12 +121,12 @@ class PayumExtensionTest extends  \PHPUnit_Framework_TestCase
     /**
      * @test
      *
-     * @expectedException \Payum\Exception\InvalidArgumentException
+     * @expectedException \Payum2\Exception\InvalidArgumentException
      * @expectedExceptionMessage The storage factory with such name theFoo already registered
      */
     public function throwIfTryToAddStoragePaymentFactoryWithNameAlreadyAdded()
     {
-        $factory = $this->getMock('Payum\Bundle\PayumBundle\DependencyInjection\Factory\Storage\StorageFactoryInterface');
+        $factory = $this->getMock('Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Storage\StorageFactoryInterface');
         $factory
             ->expects($this->atLeastOnce())
             ->method('getName')

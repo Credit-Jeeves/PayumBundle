@@ -55,7 +55,7 @@ Extend PaymentDetails class with added id property:
 namespace AcmeDemoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Payum\Payex\Bridge\Doctrine\Entity\PaymentDetails;
+use Payum2\Payex\Bridge\Doctrine\Entity\PaymentDetails;
 
 /**
  * @ORM\Entity
@@ -94,7 +94,7 @@ doctrine:
                         is_bundle: false
                         type: xml 
                         dir: %kernel.root_dir%/../vendor/payum/payex/src/Payum/Payex/Bridge/Doctrine/Resources/mapping
-                        prefix: Payum\Payex\Bridge\Doctrine\Entity
+                        prefix: Payum2\Payex\Bridge\Doctrine\Entity
 ```
 
 #### 2-b. Configure filesystem storage
@@ -107,7 +107,7 @@ Extend PaymentDetails class with added `id` property:
 
 namespace AcmeDemoBundle\Model;
 
-use Payum\Payex\Model\PaymentDetails;
+use Payum2\Payex\Model\PaymentDetails;
 
 class PayexPaymentDetails extends PaymentDetails
 {
@@ -147,7 +147,7 @@ _**Note** : We assume you choose a storage._
 //src/Acme/DemoBundle/Controller
 namespace AcmeDemoBundle\Controller;
 
-use Payum\Payex\Api\OrderApi;
+use Payum2\Payex\Api\OrderApi;
 
 class PaymentController extends Controller 
 {

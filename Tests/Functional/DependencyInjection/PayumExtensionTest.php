@@ -1,17 +1,17 @@
 <?php
-namespace Payum\Bundle\PayumBundle\Tests\Functional\DependencyInjection;
+namespace Payum2\Bundle\PayumBundle\Tests\Functional\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 
-use Payum\Bundle\PayumBundle\DependencyInjection\Factory\Payment\AuthorizeNetAimPaymentFactory;
-use Payum\Bundle\PayumBundle\DependencyInjection\Factory\Payment\Be2BillPaymentFactory;
-use Payum\Bundle\PayumBundle\DependencyInjection\Factory\Payment\PayexPaymentFactory;
-use Payum\Bundle\PayumBundle\DependencyInjection\Factory\Payment\OmnipayPaymentFactory;
-use Payum\Bundle\PayumBundle\DependencyInjection\Factory\Payment\PaypalExpressCheckoutNvpPaymentFactory;
-use Payum\Bundle\PayumBundle\DependencyInjection\Factory\Payment\PaypalProCheckoutNvpPaymentFactory;
-use Payum\Bundle\PayumBundle\DependencyInjection\PayumExtension;
+use Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Payment\AuthorizeNetAimPaymentFactory;
+use Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Payment\Be2BillPaymentFactory;
+use Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Payment\PayexPaymentFactory;
+use Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Payment\OmnipayPaymentFactory;
+use Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Payment\PaypalExpressCheckoutNvpPaymentFactory;
+use Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Payment\PaypalProCheckoutNvpPaymentFactory;
+use Payum2\Bundle\PayumBundle\DependencyInjection\PayumExtension;
 use Symfony\Component\DependencyInjection\Reference;
 
 class PayumExtensionTest extends  \PHPUnit_Framework_TestCase
@@ -21,7 +21,7 @@ class PayumExtensionTest extends  \PHPUnit_Framework_TestCase
      */
     public function shouldLoadExtensionWithPaypalExpressCheckoutConfiguredPayment()
     {
-        if (false == class_exists('Payum\Paypal\ExpressCheckout\Nvp\PaymentFactory')) {
+        if (false == class_exists('Payum2\Paypal\ExpressCheckout\Nvp\PaymentFactory')) {
             $this->markTestSkipped('Skipped because payment library is not installed.');
         }
         
@@ -66,7 +66,7 @@ class PayumExtensionTest extends  \PHPUnit_Framework_TestCase
      */
     public function shouldLoadExtensionWithPaypalProCheckoutConfiguredPayment()
     {
-        if (false == class_exists('Payum\Paypal\ProCheckout\Nvp\PaymentFactory')) {
+        if (false == class_exists('Payum2\Paypal\ProCheckout\Nvp\PaymentFactory')) {
             $this->markTestSkipped('Skipped because payment library is not installed.');
         }
         
@@ -106,7 +106,7 @@ class PayumExtensionTest extends  \PHPUnit_Framework_TestCase
      */
     public function shouldLoadExtensionWithBe2billConfiguredPayment()
     {
-        if (false == class_exists('Payum\Be2Bill\PaymentFactory')) {
+        if (false == class_exists('Payum2\Be2Bill\PaymentFactory')) {
             $this->markTestSkipped('Skipped because payment library is not installed.');
         }
         
@@ -150,7 +150,7 @@ class PayumExtensionTest extends  \PHPUnit_Framework_TestCase
      */
     public function shouldLoadExtensionWithAuthorizeNetAimConfiguredPayment()
     {
-        if (false == class_exists('Payum\AuthorizeNet\Aim\PaymentFactory')) {
+        if (false == class_exists('Payum2\AuthorizeNet\Aim\PaymentFactory')) {
             $this->markTestSkipped('Skipped because payment library is not installed.');
         }
         
@@ -194,7 +194,7 @@ class PayumExtensionTest extends  \PHPUnit_Framework_TestCase
      */
     public function shouldLoadExtensionWithOmnipayConfiguredPayment()
     {
-        if (false == class_exists('Payum\Bridge\Omnipay\PaymentFactory')) {
+        if (false == class_exists('Payum2\Bridge\Omnipay\PaymentFactory')) {
             $this->markTestSkipped('Skipped because payment library is not installed.');
         }
         
@@ -235,7 +235,7 @@ class PayumExtensionTest extends  \PHPUnit_Framework_TestCase
      */
     public function shouldLoadExtensionWithPayexConfiguredPayment()
     {
-        if (false == class_exists('Payum\Payex\PaymentFactory')) {
+        if (false == class_exists('Payum2\Payex\PaymentFactory')) {
             $this->markTestSkipped('Skipped because payment library is not installed.');
         }
 

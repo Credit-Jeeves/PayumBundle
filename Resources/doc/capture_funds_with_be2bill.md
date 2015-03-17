@@ -54,7 +54,7 @@ Extend PaymentDetails class with added id property:
 namespace AcmeDemoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Payum\Be2Bill\Bridge\Doctrine\Entity\PaymentDetails;
+use Payum2\Be2Bill\Bridge\Doctrine\Entity\PaymentDetails;
 
 /**
  * @ORM\Entity
@@ -93,7 +93,7 @@ doctrine:
                         is_bundle: false
                         type: xml 
                         dir: %kernel.root_dir%/../vendor/payum/be2bill/src/Payum/Be2Bill/Bridge/Doctrine/Resources/mapping
-                        prefix: Payum\Be2Bill\Bridge\Doctrine\Entity
+                        prefix: Payum2\Be2Bill\Bridge\Doctrine\Entity
 ```
 
 #### 2-b. Configure filesystem storage
@@ -106,7 +106,7 @@ Extend PaymentDetails class with added `id` property:
 
 namespace AcmeDemoBundle\Model;
 
-use Payum\Be2Bill\Model\PaymentDetails;
+use Payum2\Be2Bill\Model\PaymentDetails;
 
 class Be2BillPaymentDetails extends PaymentDetails
 {

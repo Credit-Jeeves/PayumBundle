@@ -54,7 +54,7 @@ Extend PaymentDetails class with added id property:
 namespace AcmeDemoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Payum\AuthorizeNet\Aim\Bridge\Doctrine\Entity\PaymentDetails;
+use Payum2\AuthorizeNet\Aim\Bridge\Doctrine\Entity\PaymentDetails;
 
 /**
  * @ORM\Entity
@@ -93,7 +93,7 @@ doctrine:
                         is_bundle: false
                         type: xml 
                         dir: %kernel.root_dir%/../vendor/payum/authorize-net-aim/src/Payum/AuthorizeNet/Aim/Bridge/Doctrine/Resources/mapping
-                        prefix: Payum\AuthorizeNet\Aim\Bridge\Doctrine\Entity
+                        prefix: Payum2\AuthorizeNet\Aim\Bridge\Doctrine\Entity
 ```
 
 #### 2-b. Configure filesystem storage
@@ -106,7 +106,7 @@ Extend PaymentDetails class with added `id` property:
 
 namespace AcmeDemoBundle\Model;
 
-use Payum\AuthorizeNet\Aim\Model\PaymentDetails;
+use Payum2\AuthorizeNet\Aim\Model\PaymentDetails;
 
 class AuthorizeNetPaymentDetails extends PaymentDetails
 {

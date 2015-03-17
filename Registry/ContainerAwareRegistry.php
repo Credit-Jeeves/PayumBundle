@@ -1,10 +1,10 @@
 <?php
-namespace Payum\Bundle\PayumBundle\Registry;
+namespace Payum2\Bundle\PayumBundle\Registry;
 
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-use Payum\Registry\AbstractRegistry;
+use Payum2\Registry\AbstractRegistry;
 
 class ContainerAwareRegistry extends AbstractRegistry implements ContainerAwareInterface 
 {
