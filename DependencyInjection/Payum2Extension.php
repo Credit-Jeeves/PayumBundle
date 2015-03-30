@@ -10,7 +10,7 @@ use Payum2\Exception\InvalidArgumentException;
 use Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Storage\StorageFactoryInterface;
 use Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Payment\PaymentFactoryInterface;
 
-class PayumExtension extends Extension
+class Payum2Extension extends Extension
 {
     /**
      * @var StorageFactoryInterface[]

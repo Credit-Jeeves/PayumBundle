@@ -15,13 +15,13 @@ use Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Storage\DoctrineStorag
 use Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Storage\FilesystemStorageFactory;
 use Payum2\Bundle\PayumBundle\DependencyInjection\Factory\Payment\HeartlandPaymentFactory;
 
-class PayumBundle extends Bundle
+class Payum2Bundle extends Bundle
 {
     public function build(ContainerBuilder $container)
     {
         parent::build($container);
 
-        /** @var $extension \Payum2\Bundle\PayumBundle\DependencyInjection\PayumExtension */
+        /** @var $extension \Payum2\Bundle\PayumBundle\DependencyInjection\Payum2Extension */
         $extension = $container->getExtension('payum2');
 
         $extension->addPaymentFactory(new PaypalExpressCheckoutNvpPaymentFactory);

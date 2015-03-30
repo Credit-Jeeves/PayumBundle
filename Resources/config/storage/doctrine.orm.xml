@@ -9,7 +9,7 @@
     </parameters>
     
     <services>
-        <service id="payum2.storage.doctrine.orm" class="%payum.storage.doctrine.orm.class%" public="false" abstract="true">
+        <service id="payum2.storage.doctrine.orm" class="%payum2.storage.doctrine.orm.class%" public="false" abstract="true">
             <argument type="service" id="payum2.entity_manager" />
             <argument><!-- should be set in DoctrineStorageFactory --></argument>
         </service>

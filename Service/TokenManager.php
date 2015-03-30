@@ -96,7 +96,7 @@ class TokenManager
         $captureToken = $this->createTokenForRoute(
             $paymentName, 
             $model, 
-            'payum_capture_do'
+            'payum2_capture_do'
         );
         $captureToken->setAfterUrl($afterToken->getTargetUrl());
         
@@ -116,7 +116,7 @@ class TokenManager
         $notifyToken = $this->createTokenForRoute(
             $paymentName,
             $model,
-            $targetRouter = 'payum_notify_do',
+            $targetRouter = 'payum2_notify_do',
             $targetRouteParameters = array(),
             $afterRoute = null,
             $afterRouteParameters = array(),

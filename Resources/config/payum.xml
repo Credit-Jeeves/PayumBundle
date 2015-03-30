@@ -19,7 +19,7 @@
     </parameters>
 
     <services>
-        <service id="payum2" class="%payum.class%">
+        <service id="payum2" class="%payum2.class%">
             <argument type="collection" /> <!-- payments services. this should be replaced while container is built -->
             <argument type="collection" /> <!-- storages services. this should be replaced while container is built -->
             <argument /> <!-- payment default name. this should be replaced while container is built -->
@@ -30,49 +30,49 @@
             </call>
         </service>
         
-        <service id="payum2.buzz.client" class="%payum.buzz.client.class%" public="false">
+        <service id="payum2.buzz.client" class="%payum2.buzz.client.class%" public="false">
             <call method="setTimeout">
                 <argument>200</argument>
             </call>
         </service>
 
-        <service id="payum2.token_manager" class="%payum.token_manager.class%">
+        <service id="payum2.token_manager" class="%payum2.token_manager.class%">
             <argument type="service" id="router"></argument>
             <argument type="service" id="payum2"></argument>
         </service>
 
         <service
             id="payum2.extension.endless_cycle_detector"
-            class="%payum.extension.endless_cycle_detector.class%"
+            class="%payum2.extension.endless_cycle_detector.class%"
             public="false"
         />
 
         <service 
             id="payum2.extension.storage.prototype"
-            class="%payum.extension.storage.class%"
+            class="%payum2.extension.storage.class%"
             abstract="true"
             public="false"
         >
             <argument/> <!-- this should be replaced with real storage service -->
         </service>
 
-        <service id="payum2.listener.interactive_request" class="%payum.listener.interactive_request.class%">
+        <service id="payum2.listener.interactive_request" class="%payum2.listener.interactive_request.class%">
             <tag name="kernel.event_listener" event="kernel.exception" method="onKernelException" priority="128" />
         </service>
 
         <service 
             id="payum2.action.capture_details_aggregated_model"
-            class="%payum.action.capture_details_aggregated_model.class%"
+            class="%payum2.action.capture_details_aggregated_model.class%"
         />
 
         <service
             id="payum2.action.sync_details_aggregated_model"
-            class="%payum.action.sync_details_aggregated_model.class%"
+            class="%payum2.action.sync_details_aggregated_model.class%"
         />
 
         <service
             id="payum2.action.status_details_aggregated_model"
-            class="%payum.action.status_details_aggregated_model.class%"
+            class="%payum2.action.status_details_aggregated_model.class%"
         />
     </services>
 </container>

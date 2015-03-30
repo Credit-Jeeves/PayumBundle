@@ -11,7 +11,7 @@
     <services>
         <service 
             id="payum2.storage.filesystem.prototype"
-            class="%payum.storage.filesystem.class%" 
+            class="%payum2.storage.filesystem.class%"
             public="false" 
             abstract="true"
         >
