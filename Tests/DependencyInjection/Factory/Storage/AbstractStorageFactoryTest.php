@@ -160,9 +160,9 @@ class AbstractStorageFactoryTest extends \PHPUnit_Framework_TestCase
             )
         ));
 
-        $this->assertEquals('payum.context.aContextName.storage.amodelclass', $actualStorageId);
-        $this->assertTrue($container->hasDefinition('payum.context.aContextName.storage.amodelclass'));
-        $this->assertSame($expectedStorage, $container->getDefinition('payum.context.aContextName.storage.amodelclass'));
+        $this->assertEquals('payum2.context.aContextName.storage.amodelclass', $actualStorageId);
+        $this->assertTrue($container->hasDefinition('payum2.context.aContextName.storage.amodelclass'));
+        $this->assertSame($expectedStorage, $container->getDefinition('payum2.context.aContextName.storage.amodelclass'));
     }
 
     /**
@@ -190,7 +190,7 @@ class AbstractStorageFactoryTest extends \PHPUnit_Framework_TestCase
             )
         ));
 
-        $this->assertFalse($container->hasDefinition('payum.context.aContextName.extension.storage.amodelclass'));
+        $this->assertFalse($container->hasDefinition('payum2.context.aContextName.extension.storage.amodelclass'));
     }
 
     /**
@@ -219,11 +219,11 @@ class AbstractStorageFactoryTest extends \PHPUnit_Framework_TestCase
             )
         ));
 
-        $this->assertTrue($container->hasDefinition('payum.context.aContextName.extension.storage.amodelclass'));
+        $this->assertTrue($container->hasDefinition('payum2.context.aContextName.extension.storage.amodelclass'));
         $this->assertDefinitionContainsMethodCall(
             $container->getDefinition('aPaymentId'), 
             'addExtension',
-            new Reference('payum.context.aContextName.extension.storage.amodelclass')
+            new Reference('payum2.context.aContextName.extension.storage.amodelclass')
         );
     }
 

@@ -22,7 +22,7 @@ class PayumBundle extends Bundle
         parent::build($container);
 
         /** @var $extension \Payum2\Bundle\PayumBundle\DependencyInjection\PayumExtension */
-        $extension = $container->getExtension('payum');
+        $extension = $container->getExtension('payum2');
 
         $extension->addPaymentFactory(new PaypalExpressCheckoutNvpPaymentFactory);
         $extension->addPaymentFactory(new PaypalProCheckoutNvpPaymentFactory);

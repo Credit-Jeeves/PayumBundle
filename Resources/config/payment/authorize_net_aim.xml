@@ -5,15 +5,15 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="payum.authorize_net_aim.payment.class">Payum2\Payment</parameter>
-        <parameter key="payum.authorize_net_aim.api.class">Payum2\AuthorizeNet\Aim\Bridge\AuthorizeNet\AuthorizeNetAIM</parameter>
-        <parameter key="payum.authorize_net_aim.action.capture.class">Payum2\AuthorizeNet\Aim\Action\CaptureAction</parameter>
-        <parameter key="payum.authorize_net_aim.action.status.class">Payum2\AuthorizeNet\Aim\Action\StatusAction</parameter>
+        <parameter key="payum2.authorize_net_aim.payment.class">Payum2\Payment</parameter>
+        <parameter key="payum2.authorize_net_aim.api.class">Payum2\AuthorizeNet\Aim\Bridge\AuthorizeNet\AuthorizeNetAIM</parameter>
+        <parameter key="payum2.authorize_net_aim.action.capture.class">Payum2\AuthorizeNet\Aim\Action\CaptureAction</parameter>
+        <parameter key="payum2.authorize_net_aim.action.status.class">Payum2\AuthorizeNet\Aim\Action\StatusAction</parameter>
     </parameters>
 
     <services>
         <service
-            id="payum.authorize_net_aim.api"
+            id="payum2.authorize_net_aim.api"
             class="%payum.authorize_net_aim.api.class%"
             abstract="true"
             public="false"
@@ -24,14 +24,14 @@
         </service>
 
         <service
-            id="payum.authorize_net_aim.action.capture"
+            id="payum2.authorize_net_aim.action.capture"
             class="%payum.authorize_net_aim.action.capture.class%"
             public="false"
         >
         </service>
 
         <service
-            id="payum.authorize_net_aim.action.status"
+            id="payum2.authorize_net_aim.action.status"
             class="%payum.authorize_net_aim.action.status.class%"
             public="false"
         >

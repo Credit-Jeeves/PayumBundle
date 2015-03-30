@@ -67,13 +67,13 @@ class AbstractPaymentFactoryTest extends \PHPUnit_Framework_TestCase
 
         $config = $processor->process($tb->buildTree(), array(array(
             'actions' => array(
-                'payum.action.foo',
-                'payum.action.bar'
+                'payum2.action.foo',
+                'payum2.action.bar'
             ))
         ));
         $this->assertArrayHasKey('actions', $config);
-        $this->assertContains('payum.action.foo', $config['actions']);
-        $this->assertContains('payum.action.bar', $config['actions']);
+        $this->assertContains('payum2.action.foo', $config['actions']);
+        $this->assertContains('payum2.action.bar', $config['actions']);
     }
 
     /**
@@ -96,13 +96,13 @@ class AbstractPaymentFactoryTest extends \PHPUnit_Framework_TestCase
 
         $config = $processor->process($tb->buildTree(), array(array(
             'apis' => array(
-                'payum.api.foo',
-                'payum.api.bar'
+                'payum2.api.foo',
+                'payum2.api.bar'
             ))
         ));
         $this->assertArrayHasKey('apis', $config);
-        $this->assertContains('payum.api.foo', $config['apis']);
-        $this->assertContains('payum.api.bar', $config['apis']);
+        $this->assertContains('payum2.api.foo', $config['apis']);
+        $this->assertContains('payum2.api.bar', $config['apis']);
     }
 
     /**
@@ -125,13 +125,13 @@ class AbstractPaymentFactoryTest extends \PHPUnit_Framework_TestCase
 
         $config = $processor->process($tb->buildTree(), array(array(
             'extensions' => array(
-                'payum.extension.foo',
-                'payum.extension.bar'
+                'payum2.extension.foo',
+                'payum2.extension.bar'
             ))
         ));
         $this->assertArrayHasKey('extensions', $config);
-        $this->assertContains('payum.extension.foo', $config['extensions']);
-        $this->assertContains('payum.extension.bar', $config['extensions']);
+        $this->assertContains('payum2.extension.foo', $config['extensions']);
+        $this->assertContains('payum2.extension.bar', $config['extensions']);
     }
 
     /**
@@ -149,7 +149,7 @@ class AbstractPaymentFactoryTest extends \PHPUnit_Framework_TestCase
             'extensions' => array(),
         ));
         
-        $this->assertEquals('payum.context.aContextName.payment', $paymentId);
+        $this->assertEquals('payum2.context.aContextName.payment', $paymentId);
         $this->assertTrue($container->hasDefinition($paymentId));
     }
 
@@ -164,8 +164,8 @@ class AbstractPaymentFactoryTest extends \PHPUnit_Framework_TestCase
 
         $paymentId = $factory->create($container, 'aContextName', array(
             'actions' => array(
-                'payum.action.foo',
-                'payum.action.bar',
+                'payum2.action.foo',
+                'payum2.action.bar',
             ),
             'apis' => array(),
             'extensions' => array(),
@@ -174,12 +174,12 @@ class AbstractPaymentFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertDefinitionContainsMethodCall(
             $container->getDefinition($paymentId), 
             'addAction', 
-            new Reference('payum.action.foo')
+            new Reference('payum2.action.foo')
         );
         $this->assertDefinitionContainsMethodCall(
             $container->getDefinition($paymentId),
             'addAction',
-            new Reference('payum.action.bar')
+            new Reference('payum2.action.bar')
         );
     }
 
@@ -201,17 +201,17 @@ class AbstractPaymentFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertDefinitionContainsMethodCall(
             $container->getDefinition($paymentId),
             'addAction',
-            new Reference('payum.action.capture_details_aggregated_model')
+            new Reference('payum2.action.capture_details_aggregated_model')
         );
         $this->assertDefinitionContainsMethodCall(
             $container->getDefinition($paymentId),
             'addAction',
-            new Reference('payum.action.sync_details_aggregated_model')
+            new Reference('payum2.action.sync_details_aggregated_model')
         );
         $this->assertDefinitionContainsMethodCall(
             $container->getDefinition($paymentId),
             'addAction',
-            new Reference('payum.action.status_details_aggregated_model')
+            new Reference('payum2.action.status_details_aggregated_model')
         );
     }
 
@@ -233,7 +233,7 @@ class AbstractPaymentFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertDefinitionContainsMethodCall(
             $container->getDefinition($paymentId),
             'addExtension',
-            new Reference('payum.extension.endless_cycle_detector')
+            new Reference('payum2.extension.endless_cycle_detector')
         );
     }
 
@@ -249,8 +249,8 @@ class AbstractPaymentFactoryTest extends \PHPUnit_Framework_TestCase
         $paymentId = $factory->create($container, 'aContextName', array(
                 'actions' => array(),
                 'apis' => array(
-                    'payum.api.foo',
-                    'payum.api.bar',
+                    'payum2.api.foo',
+                    'payum2.api.bar',
                 ),
                 'extensions' => array(),
             ));
@@ -258,12 +258,12 @@ class AbstractPaymentFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertDefinitionContainsMethodCall(
             $container->getDefinition($paymentId),
             'addApi',
-            new Reference('payum.api.foo')
+            new Reference('payum2.api.foo')
         );
         $this->assertDefinitionContainsMethodCall(
             $container->getDefinition($paymentId),
             'addApi',
-            new Reference('payum.api.bar')
+            new Reference('payum2.api.bar')
         );
     }
 
@@ -280,20 +280,20 @@ class AbstractPaymentFactoryTest extends \PHPUnit_Framework_TestCase
                 'actions' => array(),
                 'apis' => array(),
                 'extensions' => array(
-                    'payum.extension.foo',
-                    'payum.extension.bar',
+                    'payum2.extension.foo',
+                    'payum2.extension.bar',
                 ),
             ));
 
         $this->assertDefinitionContainsMethodCall(
             $container->getDefinition($paymentId),
             'addExtension',
-            new Reference('payum.extension.foo')
+            new Reference('payum2.extension.foo')
         );
         $this->assertDefinitionContainsMethodCall(
             $container->getDefinition($paymentId),
             'addExtension',
-            new Reference('payum.extension.bar')
+            new Reference('payum2.extension.bar')
         );
     }
 

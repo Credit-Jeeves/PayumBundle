@@ -37,7 +37,7 @@ class DoctrineStorageFactory extends AbstractStorageFactory
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../../../Resources/config/storage'));
         $loader->load('doctrine.'.$config['driver'].'.xml');
 
-        $contextStorageDefinition = new DefinitionDecorator('payum.storage.doctrine.'.$config['driver']);
+        $contextStorageDefinition = new DefinitionDecorator('payum2.storage.doctrine.'.$config['driver']);
         $contextStorageDefinition->setPublic(true);
         $contextStorageDefinition->replaceArgument(1, $modelClass);
         

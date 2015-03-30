@@ -12,7 +12,7 @@ Add the following lines in your `composer.json` file:
 ```json
 {
     "require": {
-        "payum/payum-bundle": "dev-master"
+        "payum2/payum-bundle": "dev-master"
     }
 }
 ```

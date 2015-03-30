@@ -9,7 +9,7 @@ Add the following lines in your `composer.json` file:
 ```json
 {
     "require": {
-        "payum/ominpay-bridge": "dev-master"
+        "payum2/ominpay-bridge": "dev-master"
     }
 }
 ```
@@ -101,7 +101,7 @@ class PaymentController extends Controller
     {        
         $paymentName = 'your_payment_name';
                 
-        $storage = $this->get('payum')->getStorageForClass(
+        $storage = $this->get('payum2')->getStorageForClass(
             'Acme\DemoBundle\Model\OmnipayPaymentDetails',
             $paymentName
         );
@@ -120,7 +120,7 @@ class PaymentController extends Controller
         
         $storage->updateModel($paymentDetails);
         
-        $captureToken = $this->get('payum.token_manager')->createTokenForCaptureRoute(
+        $captureToken = $this->get('payum2.token_manager')->createTokenForCaptureRoute(
             $paymentName,
             $paymentDetails,
             'acme_payment_done' // the route to redirect after capture;

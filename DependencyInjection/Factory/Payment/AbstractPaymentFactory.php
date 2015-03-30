@@ -16,7 +16,7 @@ abstract class AbstractPaymentFactory implements PaymentFactoryInterface
     {
         $paymentDefinition = $this->createPaymentDefinition($container, $contextName, $config);
         $paymentDefinition->setPublic(true);
-        $paymentId = 'payum.context.'.$contextName.'.payment';
+        $paymentId = 'payum2.context.'.$contextName.'.payment';
         $container->setDefinition($paymentId, $paymentDefinition);
 
         foreach (array_reverse($config['actions']) as $actionId) {
@@ -97,7 +97,7 @@ abstract class AbstractPaymentFactory implements PaymentFactoryInterface
      */
     protected function createContextParameter(ContainerBuilder $container, $contextName, $parameter, $contextParameter)
     {
-        $contextParameter = sprintf('payum.context.%s.%s', $contextName, $contextParameter);
+        $contextParameter = sprintf('payum2.context.%s.%s', $contextName, $contextParameter);
         
         $container->setParameter($contextParameter, $parameter);
         
@@ -111,17 +111,17 @@ abstract class AbstractPaymentFactory implements PaymentFactoryInterface
     {
         $paymentDefinition->addMethodCall(
             'addAction',
-            array(new Reference('payum.action.capture_details_aggregated_model'))
+            array(new Reference('payum2.action.capture_details_aggregated_model'))
         );
 
         $paymentDefinition->addMethodCall(
             'addAction',
-            array(new Reference('payum.action.sync_details_aggregated_model'))
+            array(new Reference('payum2.action.sync_details_aggregated_model'))
         );
 
         $paymentDefinition->addMethodCall(
             'addAction',
-            array(new Reference('payum.action.status_details_aggregated_model'))
+            array(new Reference('payum2.action.status_details_aggregated_model'))
         );
     }
 
@@ -132,7 +132,7 @@ abstract class AbstractPaymentFactory implements PaymentFactoryInterface
     {
         $paymentDefinition->addMethodCall(
             'addExtension', 
-            array(new Reference('payum.extension.endless_cycle_detector'))
+            array(new Reference('payum2.extension.endless_cycle_detector'))
         );
     }
 }

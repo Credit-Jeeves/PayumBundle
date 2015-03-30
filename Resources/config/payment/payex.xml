@@ -5,187 +5,187 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="payum.payex.api.soap_client_factory.class">Payum2\Payex\Api\SoapClientFactory</parameter>
-        <parameter key="payum.payex.api.order.class">Payum2\Payex\Api\OrderApi</parameter>
-        <parameter key="payum.payex.api.agreement.class">Payum2\Payex\Api\AgreementApi</parameter>
-        <parameter key="payum.payex.api.recurring.class">Payum2\Payex\Api\RecurringApi</parameter>
-        <parameter key="payum.payex.action.api.initialize_order.class">Payum2\Payex\Action\Api\InitializeOrderAction</parameter>
-        <parameter key="payum.payex.action.api.complete_order.class">Payum2\Payex\Action\Api\CompleteOrderAction</parameter>
-        <parameter key="payum.payex.action.api.check_order.class">Payum2\Payex\Action\Api\CheckOrderAction</parameter>
-        <parameter key="payum.payex.action.api.create_agreement.class">Payum2\Payex\Action\Api\CreateAgreementAction</parameter>
-        <parameter key="payum.payex.action.api.check_agreement.class">Payum2\Payex\Action\Api\CheckAgreementAction</parameter>
-        <parameter key="payum.payex.action.api.delete_agreement.class">Payum2\Payex\Action\Api\DeleteAgreementAction</parameter>
-        <parameter key="payum.payex.action.api.autopay_agreement.class">Payum2\Payex\Action\Api\AutoPayAgreementAction</parameter>
-        <parameter key="payum.payex.action.api.start_recurring_payment.class">Payum2\Payex\Action\Api\StartRecurringPaymentAction</parameter>
-        <parameter key="payum.payex.action.api.stop_recurring_payment.class">Payum2\Payex\Action\Api\StopRecurringPaymentAction</parameter>
-        <parameter key="payum.payex.action.api.check_recurring_payment.class">Payum2\Payex\Action\Api\CheckRecurringPaymentAction</parameter>
-        <parameter key="payum.payex.action.payment_details_capture.class">Payum2\Payex\Action\PaymentDetailsCaptureAction</parameter>
-        <parameter key="payum.payex.action.payment_details_sync.class">Payum2\Payex\Action\PaymentDetailsSyncAction</parameter>
-        <parameter key="payum.payex.action.payment_details_status.class">Payum2\Payex\Action\PaymentDetailsStatusAction</parameter>
-        <parameter key="payum.payex.action.autopay_payment_details_capture.class">Payum2\Payex\Action\AutoPayPaymentDetailsCaptureAction</parameter>
-        <parameter key="payum.payex.action.autopay_payment_details_status.class">Payum2\Payex\Action\AutoPayPaymentDetailsStatusAction</parameter>
-        <parameter key="payum.payex.action.agreement_details_status.class">Payum2\Payex\Action\AgreementDetailsStatusAction</parameter>
-        <parameter key="payum.payex.action.agreement_details_sync.class">Payum2\Payex\Action\AgreementDetailsSyncAction</parameter>
+        <parameter key="payum2.payex.api.soap_client_factory.class">Payum2\Payex\Api\SoapClientFactory</parameter>
+        <parameter key="payum2.payex.api.order.class">Payum2\Payex\Api\OrderApi</parameter>
+        <parameter key="payum2.payex.api.agreement.class">Payum2\Payex\Api\AgreementApi</parameter>
+        <parameter key="payum2.payex.api.recurring.class">Payum2\Payex\Api\RecurringApi</parameter>
+        <parameter key="payum2.payex.action.api.initialize_order.class">Payum2\Payex\Action\Api\InitializeOrderAction</parameter>
+        <parameter key="payum2.payex.action.api.complete_order.class">Payum2\Payex\Action\Api\CompleteOrderAction</parameter>
+        <parameter key="payum2.payex.action.api.check_order.class">Payum2\Payex\Action\Api\CheckOrderAction</parameter>
+        <parameter key="payum2.payex.action.api.create_agreement.class">Payum2\Payex\Action\Api\CreateAgreementAction</parameter>
+        <parameter key="payum2.payex.action.api.check_agreement.class">Payum2\Payex\Action\Api\CheckAgreementAction</parameter>
+        <parameter key="payum2.payex.action.api.delete_agreement.class">Payum2\Payex\Action\Api\DeleteAgreementAction</parameter>
+        <parameter key="payum2.payex.action.api.autopay_agreement.class">Payum2\Payex\Action\Api\AutoPayAgreementAction</parameter>
+        <parameter key="payum2.payex.action.api.start_recurring_payment.class">Payum2\Payex\Action\Api\StartRecurringPaymentAction</parameter>
+        <parameter key="payum2.payex.action.api.stop_recurring_payment.class">Payum2\Payex\Action\Api\StopRecurringPaymentAction</parameter>
+        <parameter key="payum2.payex.action.api.check_recurring_payment.class">Payum2\Payex\Action\Api\CheckRecurringPaymentAction</parameter>
+        <parameter key="payum2.payex.action.payment_details_capture.class">Payum2\Payex\Action\PaymentDetailsCaptureAction</parameter>
+        <parameter key="payum2.payex.action.payment_details_sync.class">Payum2\Payex\Action\PaymentDetailsSyncAction</parameter>
+        <parameter key="payum2.payex.action.payment_details_status.class">Payum2\Payex\Action\PaymentDetailsStatusAction</parameter>
+        <parameter key="payum2.payex.action.autopay_payment_details_capture.class">Payum2\Payex\Action\AutoPayPaymentDetailsCaptureAction</parameter>
+        <parameter key="payum2.payex.action.autopay_payment_details_status.class">Payum2\Payex\Action\AutoPayPaymentDetailsStatusAction</parameter>
+        <parameter key="payum2.payex.action.agreement_details_status.class">Payum2\Payex\Action\AgreementDetailsStatusAction</parameter>
+        <parameter key="payum2.payex.action.agreement_details_sync.class">Payum2\Payex\Action\AgreementDetailsSyncAction</parameter>
     </parameters>
 
     <services>
         <service
-            id="payum.payex.api.soap_client_factory"
+            id="payum2.payex.api.soap_client_factory"
             class="%payum.payex.api.soap_client_factory.class%"
             public="false"
         >
         </service>
         
         <service
-            id="payum.payex.api.order.prototype"
+            id="payum2.payex.api.order.prototype"
             class="%payum.payex.api.order.class%"
             abstract="true"
             public="false"
         >
-            <argument type="service" id="payum.payex.api.soap_client_factory" />
+            <argument type="service" id="payum2.payex.api.soap_client_factory" />
             <argument type="collection">
                 <!-- It is template service. The real service will be created by PayexPaymentFactory -->
             </argument>
         </service>
 
         <service
-            id="payum.payex.api.agreement.prototype"
+            id="payum2.payex.api.agreement.prototype"
             class="%payum.payex.api.agreement.class%"
             abstract="true"
             public="false"
         >
-            <argument type="service" id="payum.payex.api.soap_client_factory" />
+            <argument type="service" id="payum2.payex.api.soap_client_factory" />
             <argument type="collection">
                 <!-- It is template service. The real service will be created by PayexPaymentFactory -->
             </argument>
         </service>
 
         <service
-            id="payum.payex.api.recurring.prototype"
+            id="payum2.payex.api.recurring.prototype"
             class="%payum.payex.api.recurring.class%"
             abstract="true"
             public="false"
         >
-            <argument type="service" id="payum.payex.api.soap_client_factory" />
+            <argument type="service" id="payum2.payex.api.soap_client_factory" />
             <argument type="collection">
                 <!-- It is template service. The real service will be created by PayexPaymentFactory -->
             </argument>
         </service>
 
         <service
-            id="payum.payex.action.api.initialize_order"
+            id="payum2.payex.action.api.initialize_order"
             class="%payum.payex.action.api.initialize_order.class%"
             public="false"
         >
         </service>
 
         <service
-            id="payum.payex.action.api.complete_order"
+            id="payum2.payex.action.api.complete_order"
             class="%payum.payex.action.api.complete_order.class%"
             public="false"
         >
         </service>
 
         <service
-            id="payum.payex.action.api.check_order"
+            id="payum2.payex.action.api.check_order"
             class="%payum.payex.action.api.check_order.class%"
             public="false"
         >
         </service>
 
         <service
-            id="payum.payex.action.api.create_agreement"
+            id="payum2.payex.action.api.create_agreement"
             class="%payum.payex.action.api.create_agreement.class%"
             public="false"
         >
         </service>
 
         <service
-            id="payum.payex.action.api.check_agreement"
+            id="payum2.payex.action.api.check_agreement"
             class="%payum.payex.action.api.check_agreement.class%"
             public="false"
         >
         </service>
 
         <service
-            id="payum.payex.action.api.delete_agreement"
+            id="payum2.payex.action.api.delete_agreement"
             class="%payum.payex.action.api.delete_agreement.class%"
             public="false"
         >
         </service>
 
         <service
-            id="payum.payex.action.api.autopay_agreement"
+            id="payum2.payex.action.api.autopay_agreement"
             class="%payum.payex.action.api.autopay_agreement.class%"
             public="false"
         >
         </service>
 
         <service
-            id="payum.payex.action.api.start_recurring_payment"
+            id="payum2.payex.action.api.start_recurring_payment"
             class="%payum.payex.action.api.start_recurring_payment.class%"
             public="false"
         >
         </service>
 
         <service
-            id="payum.payex.action.api.stop_recurring_payment"
+            id="payum2.payex.action.api.stop_recurring_payment"
             class="%payum.payex.action.api.stop_recurring_payment.class%"
             public="false"
         >
         </service>
 
         <service
-            id="payum.payex.action.api.check_recurring_payment"
+            id="payum2.payex.action.api.check_recurring_payment"
             class="%payum.payex.action.api.check_recurring_payment.class%"
             public="false"
         >
         </service>
 
         <service
-            id="payum.payex.action.payment_details_capture"
+            id="payum2.payex.action.payment_details_capture"
             class="%payum.payex.action.payment_details_capture.class%"
             public="false"
         >
         </service>
 
         <service
-            id="payum.payex.action.autopay_payment_details_capture"
+            id="payum2.payex.action.autopay_payment_details_capture"
             class="%payum.payex.action.autopay_payment_details_capture.class%"
             public="false"
         >
         </service>
 
         <service
-            id="payum.payex.action.autopay_payment_details_status"
+            id="payum2.payex.action.autopay_payment_details_status"
             class="%payum.payex.action.autopay_payment_details_status.class%"
             public="false"
         >
         </service>
 
         <service
-            id="payum.payex.action.payment_details_status"
+            id="payum2.payex.action.payment_details_status"
             class="%payum.payex.action.payment_details_status.class%"
             public="false"
         >
         </service>
 
         <service
-            id="payum.payex.action.payment_details_sync"
+            id="payum2.payex.action.payment_details_sync"
             class="%payum.payex.action.payment_details_sync.class%"
             public="false"
         >
         </service>
 
         <service
-            id="payum.payex.action.agreement_details_status"
+            id="payum2.payex.action.agreement_details_status"
             class="%payum.payex.action.agreement_details_status.class%"
             public="false"
         >
         </service>
 
         <service
-            id="payum.payex.action.agreement_details_sync"
+            id="payum2.payex.action.agreement_details_sync"
             class="%payum.payex.action.agreement_details_sync.class%"
             public="false"
         >

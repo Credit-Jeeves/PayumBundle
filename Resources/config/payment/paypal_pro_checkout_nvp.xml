@@ -5,34 +5,34 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
   <parameters>
-    <parameter key="payum.paypal.pro_checkout_nvp.payment.class">Payum2\Payment</parameter>
-    <parameter key="payum.paypal.pro_checkout_nvp.api.class">Payum2\Paypal\ProCheckout\Nvp\Api</parameter>
+    <parameter key="payum2.paypal.pro_checkout_nvp.payment.class">Payum2\Payment</parameter>
+    <parameter key="payum2.paypal.pro_checkout_nvp.api.class">Payum2\Paypal\ProCheckout\Nvp\Api</parameter>
 
-    <parameter key="payum.paypal.pro_checkout_nvp.action.capture.class">Payum2\Paypal\ProCheckout\Nvp\Action\CaptureAction</parameter>
-    <parameter key="payum.paypal.pro_checkout_nvp.action.status.class">Payum2\Paypal\ProCheckout\Nvp\Action\StatusAction</parameter>
+    <parameter key="payum2.paypal.pro_checkout_nvp.action.capture.class">Payum2\Paypal\ProCheckout\Nvp\Action\CaptureAction</parameter>
+    <parameter key="payum2.paypal.pro_checkout_nvp.action.status.class">Payum2\Paypal\ProCheckout\Nvp\Action\StatusAction</parameter>
   </parameters>
 
   <services>
     <service
-      id="payum.paypal.pro_checkout_nvp.api"
+      id="payum2.paypal.pro_checkout_nvp.api"
       class="%payum.paypal.pro_checkout_nvp.api.class%"
       abstract="true"
       public="false"
       >
-      <argument type="service" id="payum.buzz.client" />
+      <argument type="service" id="payum2.buzz.client" />
       <argument type="collection">
         <!-- It is template service. The real service will be created by Be2BillPaymentFactory -->
       </argument>
     </service>
 
     <service
-      id="payum.paypal.pro_checkout_nvp.action.capture"
+      id="payum2.paypal.pro_checkout_nvp.action.capture"
       class="%payum.paypal.pro_checkout_nvp.action.capture.class%"
       public="false"
       />
 
     <service
-      id="payum.paypal.pro_checkout_nvp.action.status"
+      id="payum2.paypal.pro_checkout_nvp.action.status"
       class="%payum.paypal.pro_checkout_nvp.action.status.class%"
       public="false"
       />

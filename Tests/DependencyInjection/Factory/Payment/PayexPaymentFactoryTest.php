@@ -21,24 +21,24 @@ class PayexPaymentFactoryTest extends \PHPUnit_Framework_TestCase
     public static function provideDecoratedActions()
     {
         return array(
-            'api.initialize_order' => array('payum.context.aContextName.action.api.initialize_order'),
-            'api.complete_order' => array('payum.context.aContextName.action.api.complete_order'),
-            'api.check_order' => array('payum.context.aContextName.action.api.check_order'),
-            'api.create_agreement' => array('payum.context.aContextName.action.api.create_agreement'),
-            'api.delete_agreement' => array('payum.context.aContextName.action.api.delete_agreement'),
-            'api.check_agreement' => array('payum.context.aContextName.action.api.check_agreement'),
-            'api.autopay_agreement' => array('payum.context.aContextName.action.api.autopay_agreement'),
-            'api.start_recurring_payment' => array('payum.context.aContextName.action.api.start_recurring_payment'),
-            'api.stop_recurring_payment' => array('payum.context.aContextName.action.api.stop_recurring_payment'),
-            'api.check_recurring_payment' => array('payum.context.aContextName.action.api.check_recurring_payment'),
+            'api.initialize_order' => array('payum2.context.aContextName.action.api.initialize_order'),
+            'api.complete_order' => array('payum2.context.aContextName.action.api.complete_order'),
+            'api.check_order' => array('payum2.context.aContextName.action.api.check_order'),
+            'api.create_agreement' => array('payum2.context.aContextName.action.api.create_agreement'),
+            'api.delete_agreement' => array('payum2.context.aContextName.action.api.delete_agreement'),
+            'api.check_agreement' => array('payum2.context.aContextName.action.api.check_agreement'),
+            'api.autopay_agreement' => array('payum2.context.aContextName.action.api.autopay_agreement'),
+            'api.start_recurring_payment' => array('payum2.context.aContextName.action.api.start_recurring_payment'),
+            'api.stop_recurring_payment' => array('payum2.context.aContextName.action.api.stop_recurring_payment'),
+            'api.check_recurring_payment' => array('payum2.context.aContextName.action.api.check_recurring_payment'),
 
-            'payment_details_capture' => array('payum.context.aContextName.action.payment_details_capture'),
-            'payment_details_status' => array('payum.context.aContextName.action.payment_details_status'),
-            'payment_details_sync' => array('payum.context.aContextName.action.payment_details_sync'),
-            'autopay_payment_details_capture' => array('payum.context.aContextName.action.autopay_payment_details_capture'),
-            'autopay_payment_details_status' => array('payum.context.aContextName.action.autopay_payment_details_status'),
-            'agreement_details_status' => array('payum.context.aContextName.action.agreement_details_status'),
-            'agreement_details_sync' => array('payum.context.aContextName.action.agreement_details_sync'),
+            'payment_details_capture' => array('payum2.context.aContextName.action.payment_details_capture'),
+            'payment_details_status' => array('payum2.context.aContextName.action.payment_details_status'),
+            'payment_details_sync' => array('payum2.context.aContextName.action.payment_details_sync'),
+            'autopay_payment_details_capture' => array('payum2.context.aContextName.action.autopay_payment_details_capture'),
+            'autopay_payment_details_status' => array('payum2.context.aContextName.action.autopay_payment_details_status'),
+            'agreement_details_status' => array('payum2.context.aContextName.action.agreement_details_status'),
+            'agreement_details_sync' => array('payum2.context.aContextName.action.agreement_details_sync'),
         );
     }
     
@@ -218,7 +218,7 @@ class PayexPaymentFactoryTest extends \PHPUnit_Framework_TestCase
             'extensions' => array(),
         ));
         
-        $this->assertEquals('payum.context.aContextName.payment', $paymentId);
+        $this->assertEquals('payum2.context.aContextName.payment', $paymentId);
         $this->assertTrue($container->hasDefinition($paymentId));
     }
 
@@ -239,25 +239,25 @@ class PayexPaymentFactoryTest extends \PHPUnit_Framework_TestCase
                     'sandbox' => true
                 ),
             ),
-            'actions' => array('payum.action.foo'),
-            'apis' => array('payum.api.bar'),
-            'extensions' => array('payum.extension.ololo'),
+            'actions' => array('payum2.action.foo'),
+            'apis' => array('payum2.api.bar'),
+            'extensions' => array('payum2.extension.ololo'),
         ));
 
         $this->assertDefinitionContainsMethodCall(
             $container->getDefinition($paymentId), 
             'addAction', 
-            new Reference('payum.action.foo')
+            new Reference('payum2.action.foo')
         );
         $this->assertDefinitionContainsMethodCall(
             $container->getDefinition($paymentId),
             'addApi',
-            new Reference('payum.api.bar')
+            new Reference('payum2.api.bar')
         );
         $this->assertDefinitionContainsMethodCall(
             $container->getDefinition($paymentId),
             'addExtension',
-            new Reference('payum.extension.ololo')
+            new Reference('payum2.extension.ololo')
         );
     }
 
@@ -286,19 +286,19 @@ class PayexPaymentFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertDefinitionContainsMethodCall(
             $container->getDefinition($paymentId),
             'addApi',
-            new Reference('payum.context.aContextName.api.order')
+            new Reference('payum2.context.aContextName.api.order')
         );
 
         $this->assertDefinitionContainsMethodCall(
             $container->getDefinition($paymentId),
             'addApi',
-            new Reference('payum.context.aContextName.api.agreement')
+            new Reference('payum2.context.aContextName.api.agreement')
         );
 
         $this->assertDefinitionContainsMethodCall(
             $container->getDefinition($paymentId),
             'addApi',
-            new Reference('payum.context.aContextName.api.recurring')
+            new Reference('payum2.context.aContextName.api.recurring')
         );
     }
 

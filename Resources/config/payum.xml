@@ -5,21 +5,21 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="payum.class">Payum2\Bundle\PayumBundle\Registry\ContainerAwareRegistry</parameter>
-        <parameter key="payum.payment.class">Payum2\Payment</parameter>
-        <parameter key="payum.token_manager.class">Payum2\Bundle\PayumBundle\Service\TokenManager</parameter>
-        <parameter key="payum.extension.storage.class">Payum2\Extension\StorageExtension</parameter>
-        <parameter key="payum.extension.endless_cycle_detector.class">Payum2\Extension\EndlessCycleDetectorExtension</parameter>
-        <parameter key="payum.buzz.client.class">Buzz\Client\Curl</parameter>
-        <parameter key="payum.listener.interactive_request.class">Payum2\Bundle\PayumBundle\EventListener\InteractiveRequestListener</parameter>
+        <parameter key="payum2.class">Payum2\Bundle\PayumBundle\Registry\ContainerAwareRegistry</parameter>
+        <parameter key="payum2.payment.class">Payum2\Payment</parameter>
+        <parameter key="payum2.token_manager.class">Payum2\Bundle\PayumBundle\Service\TokenManager</parameter>
+        <parameter key="payum2.extension.storage.class">Payum2\Extension\StorageExtension</parameter>
+        <parameter key="payum2.extension.endless_cycle_detector.class">Payum2\Extension\EndlessCycleDetectorExtension</parameter>
+        <parameter key="payum2.buzz.client.class">Buzz\Client\Curl</parameter>
+        <parameter key="payum2.listener.interactive_request.class">Payum2\Bundle\PayumBundle\EventListener\InteractiveRequestListener</parameter>
 
-        <parameter key="payum.action.capture_details_aggregated_model.class">Payum2\Action\CaptureDetailsAggregatedModelAction</parameter>
-        <parameter key="payum.action.sync_details_aggregated_model.class">Payum2\Action\SyncDetailsAggregatedModelAction</parameter>
-        <parameter key="payum.action.status_details_aggregated_model.class">Payum2\Action\StatusDetailsAggregatedModelAction</parameter>
+        <parameter key="payum2.action.capture_details_aggregated_model.class">Payum2\Action\CaptureDetailsAggregatedModelAction</parameter>
+        <parameter key="payum2.action.sync_details_aggregated_model.class">Payum2\Action\SyncDetailsAggregatedModelAction</parameter>
+        <parameter key="payum2.action.status_details_aggregated_model.class">Payum2\Action\StatusDetailsAggregatedModelAction</parameter>
     </parameters>
 
     <services>
-        <service id="payum" class="%payum.class%">
+        <service id="payum2" class="%payum.class%">
             <argument type="collection" /> <!-- payments services. this should be replaced while container is built -->
             <argument type="collection" /> <!-- storages services. this should be replaced while container is built -->
             <argument /> <!-- payment default name. this should be replaced while container is built -->
@@ -30,25 +30,25 @@
             </call>
         </service>
         
-        <service id="payum.buzz.client" class="%payum.buzz.client.class%" public="false">
+        <service id="payum2.buzz.client" class="%payum.buzz.client.class%" public="false">
             <call method="setTimeout">
                 <argument>200</argument>
             </call>
         </service>
 
-        <service id="payum.token_manager" class="%payum.token_manager.class%">
+        <service id="payum2.token_manager" class="%payum.token_manager.class%">
             <argument type="service" id="router"></argument>
-            <argument type="service" id="payum"></argument>
+            <argument type="service" id="payum2"></argument>
         </service>
 
         <service
-            id="payum.extension.endless_cycle_detector"
+            id="payum2.extension.endless_cycle_detector"
             class="%payum.extension.endless_cycle_detector.class%"
             public="false"
         />
 
         <service 
-            id="payum.extension.storage.prototype" 
+            id="payum2.extension.storage.prototype"
             class="%payum.extension.storage.class%"
             abstract="true"
             public="false"
@@ -56,22 +56,22 @@
             <argument/> <!-- this should be replaced with real storage service -->
         </service>
 
-        <service id="payum.listener.interactive_request" class="%payum.listener.interactive_request.class%">
+        <service id="payum2.listener.interactive_request" class="%payum.listener.interactive_request.class%">
             <tag name="kernel.event_listener" event="kernel.exception" method="onKernelException" priority="128" />
         </service>
 
         <service 
-            id="payum.action.capture_details_aggregated_model" 
+            id="payum2.action.capture_details_aggregated_model"
             class="%payum.action.capture_details_aggregated_model.class%"
         />
 
         <service
-            id="payum.action.sync_details_aggregated_model"
+            id="payum2.action.sync_details_aggregated_model"
             class="%payum.action.sync_details_aggregated_model.class%"
         />
 
         <service
-            id="payum.action.status_details_aggregated_model"
+            id="payum2.action.status_details_aggregated_model"
             class="%payum.action.status_details_aggregated_model.class%"
         />
     </services>
