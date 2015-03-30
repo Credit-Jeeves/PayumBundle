@@ -30,30 +30,30 @@ class HeartlandPaymentFactory extends AbstractPaymentFactory
         
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../../../Resources/config/payment'));
         $loader->load('heartland.xml');
-        $apiDefinition = new DefinitionDecorator('payum.heartland.api');
+        $apiDefinition = new DefinitionDecorator('payum2.heartland.api');
         $apiDefinition->replaceArgument(0, $config['api']['options']);
 //        $apiDefinition->replaceArgument(1, $loader->);
-        $apiId = 'payum.context.'.$contextName.'.api';
+        $apiId = 'payum2.context.'.$contextName.'.api';
         $container->setDefinition($apiId, $apiDefinition);
         $paymentDefinition->addMethodCall('addApi', array(new Reference($apiId)));
         
-        $captureActionDefinition = new DefinitionDecorator('payum.heartland.action.make_blind_payment');
-        $captureActionId = 'payum.context.'.$contextName.'.action.make_blind_payment';
+        $captureActionDefinition = new DefinitionDecorator('payum2.heartland.action.make_blind_payment');
+        $captureActionId = 'payum2.context.'.$contextName.'.action.make_blind_payment';
         $container->setDefinition($captureActionId, $captureActionDefinition);
         $paymentDefinition->addMethodCall('addAction', array(new Reference($captureActionId)));
 
-        $captureActionDefinition = new DefinitionDecorator('payum.heartland.action.register_token_to_additional_merchant');
-        $captureActionId = 'payum.context.'.$contextName.'.action.register_token_to_additional_merchant';
+        $captureActionDefinition = new DefinitionDecorator('payum2.heartland.action.register_token_to_additional_merchant');
+        $captureActionId = 'payum2.context.'.$contextName.'.action.register_token_to_additional_merchant';
         $container->setDefinition($captureActionId, $captureActionDefinition);
         $paymentDefinition->addMethodCall('addAction', array(new Reference($captureActionId)));
 
-        $captureActionDefinition = new DefinitionDecorator('payum.heartland.action.get_token');
-        $captureActionId = 'payum.context.'.$contextName.'.action.get_token';
+        $captureActionDefinition = new DefinitionDecorator('payum2.heartland.action.get_token');
+        $captureActionId = 'payum2.context.'.$contextName.'.action.get_token';
         $container->setDefinition($captureActionId, $captureActionDefinition);
         $paymentDefinition->addMethodCall('addAction', array(new Reference($captureActionId)));
 
-        $statusActionDefinition = new DefinitionDecorator('payum.heartland.action.status');
-        $statusActionId = 'payum.context.'.$contextName.'.action.status';
+        $statusActionDefinition = new DefinitionDecorator('payum2.heartland.action.status');
+        $statusActionId = 'payum2.context.'.$contextName.'.action.status';
         $container->setDefinition($statusActionId, $statusActionDefinition);
         $paymentDefinition->addMethodCall('addAction', array(new Reference($statusActionId)));
         

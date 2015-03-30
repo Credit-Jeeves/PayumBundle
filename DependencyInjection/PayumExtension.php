@@ -72,7 +72,7 @@ class PayumExtension extends Extension
             }
         }
         
-        $registryDefinition = $container->getDefinition('payum');
+        $registryDefinition = $container->getDefinition('payum2');
         $registryDefinition->replaceArgument(0, $paymentsServicesIds);
         $registryDefinition->replaceArgument(1, $storagesServicesIds);
         $registryDefinition->replaceArgument(2, $defaultName);

@@ -32,7 +32,7 @@ class NotifyController extends Controller
      */
     protected function getPayum()
     {
-        return $this->get('payum');
+        return $this->get('payum2');
     }
 
     /**
@@ -40,6 +40,6 @@ class NotifyController extends Controller
      */
     protected function getTokenManager()
     {
-        return $this->get('payum.token_manager');
+        return $this->get('payum2.token_manager');
     }
 }

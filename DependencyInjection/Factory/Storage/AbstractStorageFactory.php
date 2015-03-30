@@ -15,7 +15,7 @@ abstract class AbstractStorageFactory implements StorageFactoryInterface
     public function create(ContainerBuilder $container, $contextName, $modelClass, $paymentId, array $config)
     {
         $storageId = sprintf(
-            'payum.context.%s.storage.%s',
+            'payum2.context.%s.storage.%s',
             $contextName,
             strtolower(str_replace('\\', '', $modelClass))
         );
@@ -56,7 +56,7 @@ abstract class AbstractStorageFactory implements StorageFactoryInterface
      */
     protected function addStorageExtension(ContainerBuilder $container, $storageId, $paymentId)
     {
-        $storageExtensionDefinition = new DefinitionDecorator('payum.extension.storage.prototype');
+        $storageExtensionDefinition = new DefinitionDecorator('payum2.extension.storage.prototype');
         $storageExtensionDefinition->replaceArgument(0, new Reference($storageId));
         $storageExtensionDefinition->setPublic(false);
         $storageExtensionId = str_replace('.storage.', '.extension.storage.', $storageId);

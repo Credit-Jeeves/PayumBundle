@@ -51,7 +51,7 @@ class MainConfigurationTest extends  \PHPUnit_Framework_TestCase
         $barModelClass = get_class($this->getMock('stdClass'));
 
         $processor->processConfiguration($configuration, array(
-            'payum' => array(
+            'payum2' => array(
                 'contexts' => array(
                     'a_context' => array(
                         'foo_payment' => array( 
@@ -79,7 +79,7 @@ class MainConfigurationTest extends  \PHPUnit_Framework_TestCase
      * @test
      * 
      * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     * @expectedExceptionMessage Invalid configuration for path "payum.contexts.a_context.storages": The storage entry must be a valid model class. It is set notExistClass
+     * @expectedExceptionMessage Invalid configuration for path "payum2.contexts.a_context.storages": The storage entry must be a valid model class. It is set notExistClass
      */
     public function throwIfTryToUseNotValidClassAsStorageEntry()
     {
@@ -88,7 +88,7 @@ class MainConfigurationTest extends  \PHPUnit_Framework_TestCase
         $processor = new Processor();
 
         $processor->processConfiguration($configuration, array(
-            'payum' => array(
+            'payum2' => array(
                 'contexts' => array(
                     'a_context' => array(
                         'foo_payment' => array(
@@ -111,7 +111,7 @@ class MainConfigurationTest extends  \PHPUnit_Framework_TestCase
      * @test
      * 
      * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     * @expectedExceptionMessage Invalid configuration for path "payum.contexts.a_context.storages.stdClass": Only one storage per entry could be selected
+     * @expectedExceptionMessage Invalid configuration for path "payum2.contexts.a_context.storages.stdClass": Only one storage per entry could be selected
      */
     public function throwIfTryToAddMoreThenOneStorageForOneEntry()
     {
@@ -120,7 +120,7 @@ class MainConfigurationTest extends  \PHPUnit_Framework_TestCase
         $processor = new Processor();
 
         $processor->processConfiguration($configuration, array(
-            'payum' => array(
+            'payum2' => array(
                 'contexts' => array(
                     'a_context' => array(
                         'foo_payment' => array(
@@ -146,7 +146,7 @@ class MainConfigurationTest extends  \PHPUnit_Framework_TestCase
      * @test
      *
      * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     * @expectedExceptionMessage Invalid configuration for path "payum.contexts.a_context.storages.stdClass": At least one storage must be configured.
+     * @expectedExceptionMessage Invalid configuration for path "payum2.contexts.a_context.storages.stdClass": At least one storage must be configured.
      */
     public function throwIfStorageEntryDefinedWithoutConcreteStorage()
     {
@@ -155,7 +155,7 @@ class MainConfigurationTest extends  \PHPUnit_Framework_TestCase
         $processor = new Processor();
 
         $processor->processConfiguration($configuration, array(
-            'payum' => array(
+            'payum2' => array(
                 'contexts' => array(
                     'a_context' => array(
                         'foo_payment' => array(
@@ -174,7 +174,7 @@ class MainConfigurationTest extends  \PHPUnit_Framework_TestCase
      * @test
      * 
      * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     * @expectedExceptionMessage Invalid configuration for path "payum.contexts.a_context": One payment from the  payments available must be selected
+     * @expectedExceptionMessage Invalid configuration for path "payum2.contexts.a_context": One payment from the  payments available must be selected
      */
     public function throwIfNonePaymentSelected()
     {
@@ -183,7 +183,7 @@ class MainConfigurationTest extends  \PHPUnit_Framework_TestCase
         $processor = new Processor();
 
         $processor->processConfiguration($configuration, array(
-            'payum' => array(
+            'payum2' => array(
                 'contexts' => array(
                     'a_context' => array()
                 )
@@ -201,7 +201,7 @@ class MainConfigurationTest extends  \PHPUnit_Framework_TestCase
         $processor = new Processor();
 
         $processor->processConfiguration($configuration, array(
-            'payum' => array(
+            'payum2' => array(
                 'contexts' => array(
                     'a_context' => array(
                         'foo_payment' => array(
@@ -217,7 +217,7 @@ class MainConfigurationTest extends  \PHPUnit_Framework_TestCase
      * @test
      *
      * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     * @expectedExceptionMessage Invalid configuration for path "payum.contexts.a_context": Only one payment per context could be selected
+     * @expectedExceptionMessage Invalid configuration for path "payum2.contexts.a_context": Only one payment per context could be selected
      */
     public function throwIfMoreThenOnePaymentSelected()
     {
@@ -226,7 +226,7 @@ class MainConfigurationTest extends  \PHPUnit_Framework_TestCase
         $processor = new Processor();
 
         $processor->processConfiguration($configuration, array(
-            'payum' => array(
+            'payum2' => array(
                 'contexts' => array(
                     'a_context' => array(
                         'bar_payment' => array(

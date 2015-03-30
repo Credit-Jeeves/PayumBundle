@@ -14,19 +14,19 @@ class PaypalExpressCheckoutNvpPaymentFactoryTest extends \PHPUnit_Framework_Test
     public static function provideDecoratedActions()
     {
         return array(
-            'api.authorize_token' => array('payum.context.aContextName.action.api.authorize_token'),
-            'api.do_express_checkout_payment' => array('payum.context.aContextName.action.api.do_express_checkout_payment'),
-            'api.get_express_checkout_details' => array('payum.context.aContextName.action.api.get_express_checkout_details'),
-            'api.get_transaction_details' => array('payum.context.aContextName.action.api.get_transaction_details'),
-            'api.set_express_checkout' => array('payum.context.aContextName.action.api.set_express_checkout'),
-            'api.create_recurring_payment_profile' => array('payum.context.aContextName.action.api.create_recurring_payment_profile'),
-            'api.get_recurring_payments_profile_details' => array('payum.context.aContextName.action.api.get_recurring_payments_profile_details'),
+            'api.authorize_token' => array('payum2.context.aContextName.action.api.authorize_token'),
+            'api.do_express_checkout_payment' => array('payum2.context.aContextName.action.api.do_express_checkout_payment'),
+            'api.get_express_checkout_details' => array('payum2.context.aContextName.action.api.get_express_checkout_details'),
+            'api.get_transaction_details' => array('payum2.context.aContextName.action.api.get_transaction_details'),
+            'api.set_express_checkout' => array('payum2.context.aContextName.action.api.set_express_checkout'),
+            'api.create_recurring_payment_profile' => array('payum2.context.aContextName.action.api.create_recurring_payment_profile'),
+            'api.get_recurring_payments_profile_details' => array('payum2.context.aContextName.action.api.get_recurring_payments_profile_details'),
             
-            'capture' => array('payum.context.aContextName.action.capture'),
-            'payment_details_status' => array('payum.context.aContextName.action.payment_details_status'),
-            'payment_details_sync' => array('payum.context.aContextName.action.payment_details_sync'),
-            'recurring_payment_details_status' => array('payum.context.aContextName.action.recurring_payment_details_status'),
-            'recurring_payment_details_sync' => array('payum.context.aContextName.action.recurring_payment_details_sync'),
+            'capture' => array('payum2.context.aContextName.action.capture'),
+            'payment_details_status' => array('payum2.context.aContextName.action.payment_details_status'),
+            'payment_details_sync' => array('payum2.context.aContextName.action.payment_details_sync'),
+            'recurring_payment_details_status' => array('payum2.context.aContextName.action.recurring_payment_details_status'),
+            'recurring_payment_details_sync' => array('payum2.context.aContextName.action.recurring_payment_details_sync'),
         );
     }
     
@@ -238,7 +238,7 @@ class PaypalExpressCheckoutNvpPaymentFactoryTest extends \PHPUnit_Framework_Test
             'extensions' => array(),
         ));
         
-        $this->assertEquals('payum.context.aContextName.payment', $paymentId);
+        $this->assertEquals('payum2.context.aContextName.payment', $paymentId);
         $this->assertTrue($container->hasDefinition($paymentId));
     }
 
@@ -260,25 +260,25 @@ class PaypalExpressCheckoutNvpPaymentFactoryTest extends \PHPUnit_Framework_Test
                     'signature' => 'aSignature',
                 ),
             ),
-            'actions' => array('payum.action.foo'),
-            'apis' => array('payum.api.bar'),
-            'extensions' => array('payum.extension.ololo'),
+            'actions' => array('payum2.action.foo'),
+            'apis' => array('payum2.api.bar'),
+            'extensions' => array('payum2.extension.ololo'),
         ));
 
         $this->assertDefinitionContainsMethodCall(
             $container->getDefinition($paymentId), 
             'addAction', 
-            new Reference('payum.action.foo')
+            new Reference('payum2.action.foo')
         );
         $this->assertDefinitionContainsMethodCall(
             $container->getDefinition($paymentId),
             'addApi',
-            new Reference('payum.api.bar')
+            new Reference('payum2.api.bar')
         );
         $this->assertDefinitionContainsMethodCall(
             $container->getDefinition($paymentId),
             'addExtension',
-            new Reference('payum.extension.ololo')
+            new Reference('payum2.extension.ololo')
         );
     }
 
@@ -307,7 +307,7 @@ class PaypalExpressCheckoutNvpPaymentFactoryTest extends \PHPUnit_Framework_Test
             'extensions' => array(),
         ));
 
-        $this->assertTrue($container->hasDefinition('payum.context.aContextName.action.capture'));
+        $this->assertTrue($container->hasDefinition('payum2.context.aContextName.action.capture'));
 
         $this->assertDefinitionContainsMethodCall(
             $container->getDefinition($paymentId),

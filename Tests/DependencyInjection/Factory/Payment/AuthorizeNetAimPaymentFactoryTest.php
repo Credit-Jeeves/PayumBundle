@@ -189,7 +189,7 @@ class AuthorizeNetAimPaymentFactoryTest extends \PHPUnit_Framework_TestCase
             'extensions' => array(),
         ));
         
-        $this->assertEquals('payum.context.aContextName.payment', $paymentId);
+        $this->assertEquals('payum2.context.aContextName.payment', $paymentId);
         $this->assertTrue($container->hasDefinition($paymentId));
     }
 
@@ -210,25 +210,25 @@ class AuthorizeNetAimPaymentFactoryTest extends \PHPUnit_Framework_TestCase
                     'sandbox' => true,
                 )
             ),
-            'actions' => array('payum.action.foo'),
-            'apis' => array('payum.api.bar'),
-            'extensions' => array('payum.extension.ololo'),
+            'actions' => array('payum2.action.foo'),
+            'apis' => array('payum2.api.bar'),
+            'extensions' => array('payum2.extension.ololo'),
         ));
 
         $this->assertDefinitionContainsMethodCall(
             $container->getDefinition($paymentId), 
             'addAction', 
-            new Reference('payum.action.foo')
+            new Reference('payum2.action.foo')
         );
         $this->assertDefinitionContainsMethodCall(
             $container->getDefinition($paymentId),
             'addApi',
-            new Reference('payum.api.bar')
+            new Reference('payum2.api.bar')
         );
         $this->assertDefinitionContainsMethodCall(
             $container->getDefinition($paymentId),
             'addExtension',
-            new Reference('payum.extension.ololo')
+            new Reference('payum2.extension.ololo')
         );
     }
 
@@ -254,12 +254,12 @@ class AuthorizeNetAimPaymentFactoryTest extends \PHPUnit_Framework_TestCase
             'extensions' => array(),
         ));
 
-        $this->assertTrue($container->hasDefinition('payum.context.aContextName.api'));
+        $this->assertTrue($container->hasDefinition('payum2.context.aContextName.api'));
 
         $this->assertDefinitionContainsMethodCall(
             $container->getDefinition($paymentId),
             'addApi',
-            new Reference('payum.context.aContextName.api')
+            new Reference('payum2.context.aContextName.api')
         );
     }
 
@@ -285,12 +285,12 @@ class AuthorizeNetAimPaymentFactoryTest extends \PHPUnit_Framework_TestCase
             'extensions' => array(),
         ));
 
-        $this->assertTrue($container->hasDefinition('payum.context.aContextName.action.capture'));
+        $this->assertTrue($container->hasDefinition('payum2.context.aContextName.action.capture'));
 
         $this->assertDefinitionContainsMethodCall(
             $container->getDefinition($paymentId),
             'addAction',
-            new Reference('payum.context.aContextName.action.capture')
+            new Reference('payum2.context.aContextName.action.capture')
         );
     }
 
@@ -316,12 +316,12 @@ class AuthorizeNetAimPaymentFactoryTest extends \PHPUnit_Framework_TestCase
             'extensions' => array(),
         ));
 
-        $this->assertTrue($container->hasDefinition('payum.context.aContextName.action.status'));
+        $this->assertTrue($container->hasDefinition('payum2.context.aContextName.action.status'));
 
         $this->assertDefinitionContainsMethodCall(
             $container->getDefinition($paymentId),
             'addAction',
-            new Reference('payum.context.aContextName.action.status')
+            new Reference('payum2.context.aContextName.action.status')
         );
     }
 

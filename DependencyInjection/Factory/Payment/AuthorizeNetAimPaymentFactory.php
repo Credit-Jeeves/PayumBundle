@@ -29,21 +29,21 @@ class AuthorizeNetAimPaymentFactory extends AbstractPaymentFactory
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../../../Resources/config/payment'));
         $loader->load('authorize_net_aim.xml');
 
-        $apiDefinition = new DefinitionDecorator('payum.authorize_net_aim.api');
+        $apiDefinition = new DefinitionDecorator('payum2.authorize_net_aim.api');
         $apiDefinition->replaceArgument(0, $config['api']['options']['login_id']);
         $apiDefinition->replaceArgument(1, $config['api']['options']['transaction_key']);
         $apiDefinition->addMethodCall('setSandbox', array($config['api']['options']['sandbox']));
-        $apiId = 'payum.context.'.$contextName.'.api';
+        $apiId = 'payum2.context.'.$contextName.'.api';
         $container->setDefinition($apiId, $apiDefinition);
         $paymentDefinition->addMethodCall('addApi', array(new Reference($apiId)));
         
-        $captureActionDefinition = new DefinitionDecorator('payum.authorize_net_aim.action.capture');
-        $captureActionId = 'payum.context.'.$contextName.'.action.capture';
+        $captureActionDefinition = new DefinitionDecorator('payum2.authorize_net_aim.action.capture');
+        $captureActionId = 'payum2.context.'.$contextName.'.action.capture';
         $container->setDefinition($captureActionId, $captureActionDefinition);
         $paymentDefinition->addMethodCall('addAction', array(new Reference($captureActionId)));
 
-        $statusActionDefinition = new DefinitionDecorator('payum.authorize_net_aim.action.status');
-        $statusActionId = 'payum.context.'.$contextName.'.action.status';
+        $statusActionDefinition = new DefinitionDecorator('payum2.authorize_net_aim.action.status');
+        $statusActionId = 'payum2.context.'.$contextName.'.action.status';
         $container->setDefinition($statusActionId, $statusActionDefinition);
         $paymentDefinition->addMethodCall('addAction', array(new Reference($statusActionId)));
         

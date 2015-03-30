@@ -7,7 +7,7 @@ Add the following lines in your `composer.json` file:
 ```json
 {
     "require": {
-        "payum/paypal-express-checkout-nvp": "dev-master"
+        "payum2/paypal-express-checkout-nvp": "dev-master"
     }
 }
 ```
@@ -156,7 +156,7 @@ class PaymentController extends Controller
     {
         $paymentName = 'your_payment_name';
     
-        $storage = $this->get('payum')->getStorageForClass(
+        $storage = $this->get('payum2')->getStorageForClass(
             'Acme\DemoBundle\Entity\PaypalExpressPaymentDetails',
             $paymentName
         );
@@ -168,7 +168,7 @@ class PaymentController extends Controller
         
         $storage->updateModel($paymentDetails);
         
-        $captureToken = $this->get('payum.token_manager')->createTokenForCaptureRoute(
+        $captureToken = $this->get('payum2.token_manager')->createTokenForCaptureRoute(
             $paymentName,
             $paymentDetails,
             'acme_payment_done' // the route to redirect after capture;

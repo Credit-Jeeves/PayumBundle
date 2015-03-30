@@ -5,18 +5,18 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="payum.heartland.payment.class">Payum2\Payment</parameter>
-        <parameter key="payum.heartland.api.class">Payum2\Heartland\Api</parameter>
-        <parameter key="payum.heartland.soap.class">Payum2\Heartland\SoapClient</parameter>
-        <parameter key="payum.heartland.action.make_blind_payment.class">Payum2\Heartland\Action\MakeBlindPaymentAction</parameter>
-        <parameter key="payum.heartland.action.register_token_to_additional_merchant.class">Payum2\Heartland\Action\RegisterTokenToAdditionalMerchantAction</parameter>
-        <parameter key="payum.heartland.action.get_token.class">Payum2\Heartland\Action\GetTokenAction</parameter>
-        <parameter key="payum.heartland.action.status.class">Payum2\Heartland\Action\StatusAction</parameter>
+        <parameter key="payum2.heartland.payment.class">Payum2\Payment</parameter>
+        <parameter key="payum2.heartland.api.class">Payum2\Heartland\Api</parameter>
+        <parameter key="payum2.heartland.soap.class">Payum2\Heartland\SoapClient</parameter>
+        <parameter key="payum2.heartland.action.make_blind_payment.class">Payum2\Heartland\Action\MakeBlindPaymentAction</parameter>
+        <parameter key="payum2.heartland.action.register_token_to_additional_merchant.class">Payum2\Heartland\Action\RegisterTokenToAdditionalMerchantAction</parameter>
+        <parameter key="payum2.heartland.action.get_token.class">Payum2\Heartland\Action\GetTokenAction</parameter>
+        <parameter key="payum2.heartland.action.status.class">Payum2\Heartland\Action\StatusAction</parameter>
     </parameters>
 
     <services>
         <service
-            id="payum.heartland.api"
+            id="payum2.heartland.api"
             class="%payum.heartland.api.class%"
             abstract="true"
             public="false"
@@ -26,28 +26,28 @@
         </service>
 
         <service
-            id="payum.heartland.action.make_blind_payment"
+            id="payum2.heartland.action.make_blind_payment"
             class="%payum.heartland.action.make_blind_payment.class%"
             public="false"
         >
         </service>
 
         <service
-            id="payum.heartland.action.register_token_to_additional_merchant"
+            id="payum2.heartland.action.register_token_to_additional_merchant"
             class="%payum.heartland.action.register_token_to_additional_merchant.class%"
             public="false"
         >
         </service>
 
         <service
-            id="payum.heartland.action.get_token"
+            id="payum2.heartland.action.get_token"
             class="%payum.heartland.action.get_token.class%"
             public="false"
         >
         </service>
 
         <service
-            id="payum.heartland.action.status"
+            id="payum2.heartland.action.status"
             class="%payum.heartland.action.status.class%"
             public="false"
         >

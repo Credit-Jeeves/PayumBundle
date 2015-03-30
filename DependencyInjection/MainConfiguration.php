@@ -45,7 +45,7 @@ class MainConfiguration implements ConfigurationInterface
         $paymentFactories = $this->paymentFactories;
         
         $tb = new TreeBuilder();
-        $rootNode = $tb->root('payum');
+        $rootNode = $tb->root('payum2');
         
         $contextsPrototypeNode = $rootNode
             ->children()

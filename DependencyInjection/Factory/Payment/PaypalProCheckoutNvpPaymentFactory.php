@@ -34,21 +34,21 @@ class PaypalProCheckoutNvpPaymentFactory extends AbstractPaymentFactory
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../../../Resources/config/payment'));
         $loader->load('paypal_pro_checkout_nvp.xml');
 
-        $apiDefinition = new DefinitionDecorator('payum.paypal.pro_checkout_nvp.api');
+        $apiDefinition = new DefinitionDecorator('payum2.paypal.pro_checkout_nvp.api');
         $apiDefinition->replaceArgument(0, new Reference($config['api']['client']));
         $apiDefinition->replaceArgument(1, $config['api']['options']);
         $apiDefinition->setPublic(true);
-        $apiId = 'payum.context.'.$contextName.'.api';
+        $apiId = 'payum2.context.'.$contextName.'.api';
         $container->setDefinition($apiId, $apiDefinition);
         $paymentDefinition->addMethodCall('addApi', array(new Reference($apiId)));
 
-        $captureDefinition = new DefinitionDecorator('payum.paypal.pro_checkout_nvp.action.capture');
-        $captureId = 'payum.context.' . $contextName . '.action.capture';
+        $captureDefinition = new DefinitionDecorator('payum2.paypal.pro_checkout_nvp.action.capture');
+        $captureId = 'payum2.context.' . $contextName . '.action.capture';
         $container->setDefinition($captureId, $captureDefinition);
         $paymentDefinition->addMethodCall('addAction', array(new Reference($captureId)));
 
-        $statusDefinition = new DefinitionDecorator('payum.paypal.pro_checkout_nvp.action.status');
-        $statusId = 'payum.context.' . $contextName . '.action.status';
+        $statusDefinition = new DefinitionDecorator('payum2.paypal.pro_checkout_nvp.action.status');
+        $statusId = 'payum2.context.' . $contextName . '.action.status';
         $container->setDefinition($statusId, $statusDefinition);
         $paymentDefinition->addMethodCall('addAction', array(new Reference($statusId)));
 
@@ -72,7 +72,7 @@ class PaypalProCheckoutNvpPaymentFactory extends AbstractPaymentFactory
         
         $builder->children()
             ->arrayNode('api')->isRequired()->children()
-                ->scalarNode('client')->defaultValue('payum.buzz.client')->cannotBeEmpty()->end()
+                ->scalarNode('client')->defaultValue('payum2.buzz.client')->cannotBeEmpty()->end()
                 ->arrayNode('options')->isRequired()->children()
                     ->scalarNode('username')->isRequired()->cannotBeEmpty()->end()
                     ->scalarNode('password')->isRequired()->cannotBeEmpty()->end()

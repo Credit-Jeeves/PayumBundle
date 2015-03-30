@@ -38,7 +38,7 @@ class FilesystemStorageFactory extends AbstractStorageFactory
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../../../Resources/config/storage'));
         $loader->load('filesystem.xml');
 
-        $contextStorageDefinition = new DefinitionDecorator('payum.storage.filesystem.prototype');
+        $contextStorageDefinition = new DefinitionDecorator('payum2.storage.filesystem.prototype');
         $contextStorageDefinition->setPublic(true);
         $contextStorageDefinition->replaceArgument(0, $config['storage_dir']);
         $contextStorageDefinition->replaceArgument(1, $modelClass);

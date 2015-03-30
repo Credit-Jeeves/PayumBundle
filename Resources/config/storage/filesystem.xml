@@ -5,12 +5,12 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="payum.storage.filesystem.class">Payum2\Storage\FilesystemStorage</parameter>
+        <parameter key="payum2.storage.filesystem.class">Payum2\Storage\FilesystemStorage</parameter>
     </parameters>
 
     <services>
         <service 
-            id="payum.storage.filesystem.prototype" 
+            id="payum2.storage.filesystem.prototype"
             class="%payum.storage.filesystem.class%" 
             public="false" 
             abstract="true"

@@ -51,13 +51,13 @@ class PayumExtensionTest extends  \PHPUnit_Framework_TestCase
         
         $extension->load($configs, $containerBuilder);
         
-        $this->assertTrue($containerBuilder->hasDefinition('payum.context.a_context.api'));
-        $this->assertTrue($containerBuilder->hasDefinition('payum.context.a_context.payment'));
+        $this->assertTrue($containerBuilder->hasDefinition('payum2.context.a_context.api'));
+        $this->assertTrue($containerBuilder->hasDefinition('payum2.context.a_context.payment'));
 
         $this->assertDefinitionContainsMethodCall(
-            $containerBuilder->getDefinition('payum.context.a_context.payment'),
+            $containerBuilder->getDefinition('payum2.context.a_context.payment'),
             'addApi',
-            new Reference('payum.context.a_context.api')
+            new Reference('payum2.context.a_context.api')
         );
     }
 
@@ -97,8 +97,8 @@ class PayumExtensionTest extends  \PHPUnit_Framework_TestCase
 
         $extension->load($configs, $containerBuilder);
 
-        $this->assertTrue($containerBuilder->hasDefinition('payum.context.a_context.api'));
-        $this->assertTrue($containerBuilder->hasDefinition('payum.context.a_context.payment'));
+        $this->assertTrue($containerBuilder->hasDefinition('payum2.context.a_context.api'));
+        $this->assertTrue($containerBuilder->hasDefinition('payum2.context.a_context.payment'));
     }
 
     /**
@@ -135,13 +135,13 @@ class PayumExtensionTest extends  \PHPUnit_Framework_TestCase
 
         $extension->load($configs, $containerBuilder);
 
-        $this->assertTrue($containerBuilder->hasDefinition('payum.context.a_context.api'));
-        $this->assertTrue($containerBuilder->hasDefinition('payum.context.a_context.payment'));
+        $this->assertTrue($containerBuilder->hasDefinition('payum2.context.a_context.api'));
+        $this->assertTrue($containerBuilder->hasDefinition('payum2.context.a_context.payment'));
 
         $this->assertDefinitionContainsMethodCall(
-            $containerBuilder->getDefinition('payum.context.a_context.payment'),
+            $containerBuilder->getDefinition('payum2.context.a_context.payment'),
             'addApi',
-            new Reference('payum.context.a_context.api')
+            new Reference('payum2.context.a_context.api')
         );
     }
 
@@ -179,13 +179,13 @@ class PayumExtensionTest extends  \PHPUnit_Framework_TestCase
 
         $extension->load($configs, $containerBuilder);
 
-        $this->assertTrue($containerBuilder->hasDefinition('payum.context.a_context.api'));
-        $this->assertTrue($containerBuilder->hasDefinition('payum.context.a_context.payment'));
+        $this->assertTrue($containerBuilder->hasDefinition('payum2.context.a_context.api'));
+        $this->assertTrue($containerBuilder->hasDefinition('payum2.context.a_context.payment'));
 
         $this->assertDefinitionContainsMethodCall(
-            $containerBuilder->getDefinition('payum.context.a_context.payment'),
+            $containerBuilder->getDefinition('payum2.context.a_context.payment'),
             'addApi',
-            new Reference('payum.context.a_context.api')
+            new Reference('payum2.context.a_context.api')
         );
     }
 
@@ -220,13 +220,13 @@ class PayumExtensionTest extends  \PHPUnit_Framework_TestCase
 
         $extension->load($configs, $containerBuilder);
 
-        $this->assertTrue($containerBuilder->hasDefinition('payum.context.a_context.gateway'));
-        $this->assertTrue($containerBuilder->hasDefinition('payum.context.a_context.payment'));
+        $this->assertTrue($containerBuilder->hasDefinition('payum2.context.a_context.gateway'));
+        $this->assertTrue($containerBuilder->hasDefinition('payum2.context.a_context.payment'));
 
         $this->assertDefinitionContainsMethodCall(
-            $containerBuilder->getDefinition('payum.context.a_context.payment'),
+            $containerBuilder->getDefinition('payum2.context.a_context.payment'),
             'addApi',
-            new Reference('payum.context.a_context.gateway')
+            new Reference('payum2.context.a_context.gateway')
         );
     }
 
@@ -263,13 +263,13 @@ class PayumExtensionTest extends  \PHPUnit_Framework_TestCase
 
         $extension->load($configs, $containerBuilder);
 
-        $this->assertTrue($containerBuilder->hasDefinition('payum.context.a_context.api.order'));
-        $this->assertTrue($containerBuilder->hasDefinition('payum.context.a_context.payment'));
+        $this->assertTrue($containerBuilder->hasDefinition('payum2.context.a_context.api.order'));
+        $this->assertTrue($containerBuilder->hasDefinition('payum2.context.a_context.payment'));
 
         $this->assertDefinitionContainsMethodCall(
-            $containerBuilder->getDefinition('payum.context.a_context.payment'),
+            $containerBuilder->getDefinition('payum2.context.a_context.payment'),
             'addApi',
-            new Reference('payum.context.a_context.api.order')
+            new Reference('payum2.context.a_context.api.order')
         );
     }
 

@@ -52,7 +52,7 @@ class MainConfigurationTest extends  \PHPUnit_Framework_TestCase
         $processor = new Processor();
 
         $processor->processConfiguration($configuration, array(
-            'payum' => array(
+            'payum2' => array(
                 'contexts' => array(
                     'a_context' => array(
                         'paypal_express_checkout_nvp' => array(
@@ -85,7 +85,7 @@ class MainConfigurationTest extends  \PHPUnit_Framework_TestCase
         $processor = new Processor();
 
         $processor->processConfiguration($configuration, array(
-            'payum' => array(
+            'payum2' => array(
                 'contexts' => array(
                     'a_context' => array(
                         'storages' => array(
@@ -115,7 +115,7 @@ class MainConfigurationTest extends  \PHPUnit_Framework_TestCase
         $processor = new Processor();
 
         $processor->processConfiguration($configuration, array(
-            'payum' => array(
+            'payum2' => array(
                 'contexts' => array(
                     'a_context' => array(
                         'storages' => array(

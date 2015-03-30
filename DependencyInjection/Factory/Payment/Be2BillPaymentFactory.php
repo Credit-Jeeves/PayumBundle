@@ -29,21 +29,21 @@ class Be2BillPaymentFactory extends AbstractPaymentFactory
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../../../Resources/config/payment'));
         $loader->load('be2bill.xml');
 
-        $apiDefinition = new DefinitionDecorator('payum.be2bill.api');
+        $apiDefinition = new DefinitionDecorator('payum2.be2bill.api');
         $apiDefinition->replaceArgument(0, new Reference($config['api']['client']));
         $apiDefinition->replaceArgument(1, $config['api']['options']);
         $apiDefinition->setPublic(true);
-        $apiId = 'payum.context.'.$contextName.'.api';
+        $apiId = 'payum2.context.'.$contextName.'.api';
         $container->setDefinition($apiId, $apiDefinition);
         $paymentDefinition->addMethodCall('addApi', array(new Reference($apiId)));
         
-        $captureActionDefinition = new DefinitionDecorator('payum.be2bill.action.capture');
-        $captureActionId = 'payum.context.'.$contextName.'.action.capture';
+        $captureActionDefinition = new DefinitionDecorator('payum2.be2bill.action.capture');
+        $captureActionId = 'payum2.context.'.$contextName.'.action.capture';
         $container->setDefinition($captureActionId, $captureActionDefinition);
         $paymentDefinition->addMethodCall('addAction', array(new Reference($captureActionId)));
 
-        $statusActionDefinition = new DefinitionDecorator('payum.be2bill.action.status');
-        $statusActionId = 'payum.context.'.$contextName.'.action.status';
+        $statusActionDefinition = new DefinitionDecorator('payum2.be2bill.action.status');
+        $statusActionId = 'payum2.context.'.$contextName.'.action.status';
         $container->setDefinition($statusActionId, $statusActionDefinition);
         $paymentDefinition->addMethodCall('addAction', array(new Reference($statusActionId)));
 
@@ -67,7 +67,7 @@ class Be2BillPaymentFactory extends AbstractPaymentFactory
         
         $builder->children()
             ->arrayNode('api')->isRequired()->children()
-                ->scalarNode('client')->defaultValue('payum.buzz.client')->cannotBeEmpty()->end()
+                ->scalarNode('client')->defaultValue('payum2.buzz.client')->cannotBeEmpty()->end()
                 ->arrayNode('options')->isRequired()->children()
                     ->scalarNode('identifier')->isRequired()->cannotBeEmpty()->end()
                     ->scalarNode('password')->isRequired()->cannotBeEmpty()->end()
