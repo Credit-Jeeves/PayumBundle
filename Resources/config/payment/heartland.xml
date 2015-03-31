@@ -17,7 +17,7 @@
     <services>
         <service
             id="payum2.heartland.api"
-            class="%payum.heartland.api.class%"
+            class="%payum2.heartland.api.class%"
             abstract="true"
             public="false"
         >
@@ -27,28 +27,28 @@
 
         <service
             id="payum2.heartland.action.make_blind_payment"
-            class="%payum.heartland.action.make_blind_payment.class%"
+            class="%payum2.heartland.action.make_blind_payment.class%"
             public="false"
         >
         </service>
 
         <service
             id="payum2.heartland.action.register_token_to_additional_merchant"
-            class="%payum.heartland.action.register_token_to_additional_merchant.class%"
+            class="%payum2.heartland.action.register_token_to_additional_merchant.class%"
             public="false"
         >
         </service>
 
         <service
             id="payum2.heartland.action.get_token"
-            class="%payum.heartland.action.get_token.class%"
+            class="%payum2.heartland.action.get_token.class%"
             public="false"
         >
         </service>
 
         <service
             id="payum2.heartland.action.status"
-            class="%payum.heartland.action.status.class%"
+            class="%payum2.heartland.action.status.class%"
             public="false"
         >
         </service>

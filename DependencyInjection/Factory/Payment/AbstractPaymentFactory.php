@@ -80,7 +80,7 @@ abstract class AbstractPaymentFactory implements PaymentFactoryInterface
     {
         $paymentDefinition = new Definition();
         $paymentDefinition->setClass(
-            $this->createContextParameter($container, $contextName, '%payum.payment.class%', 'payment.class')
+            $this->createContextParameter($container, $contextName, '%payum2.payment.class%', 'payment.class')
         );
         
         return $paymentDefinition;
